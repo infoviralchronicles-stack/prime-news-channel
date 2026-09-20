@@ -43,9 +43,9 @@ export default function HomePage({
   };
 
   const leadStory = articles[0];
-  const leadSecondary = articles.slice(1, 3);
-  const middleRow = articles.slice(3, 7);
-  const lowerBroadsheet = articles.slice(7);
+  const leadSecondary = articles.slice(1, 4);
+  const middleRow = articles.slice(4, 8);
+  const lowerBroadsheet = articles.slice(8);
 
   return (
     <div className="space-y-10 py-6">
@@ -108,29 +108,43 @@ export default function HomePage({
             )}
 
             {/* Side Highlights (5 Cols) */}
-            <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 flex flex-col space-y-4">
               <div className="pb-2 border-b-2 border-black flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-widest font-sans text-neutral-900">
                   Top Dispatches &amp; Analysis
                 </h3>
                 <span className="text-[10px] font-sans uppercase text-neutral-400">Front Page Briefing</span>
               </div>
-              <div className="divide-y divide-neutral-200 flex-1 flex flex-col justify-between">
+              <div className="divide-y divide-neutral-200 flex flex-col">
                 {leadSecondary.map((art) => (
-                  <article key={art.id} className="py-4 first:pt-0 last:pb-0 group">
-                    <Link href={`/article/${art.slug}`} className="block">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
-                        {art.category} • Analysis
-                      </span>
-                      <h3 className="text-lg sm:text-xl font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
-                        {art.title}
-                      </h3>
-                      <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
-                        {art.summary}
-                      </p>
-                      <div className="mt-2 text-[11px] text-neutral-500 font-sans">
-                        By <strong>{art.author || art.source}</strong>
+                  <article key={art.id} className="py-3 first:pt-0 last:pb-0 group">
+                    <Link href={`/article/${art.slug}`} className="flex gap-4 items-start">
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
+                          {art.category} • Analysis
+                        </span>
+                        <h3 className="text-base sm:text-lg font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-0.5">
+                          {art.title}
+                        </h3>
+                        <p className="text-xs font-serif-body text-neutral-600 mt-1 line-clamp-2 leading-relaxed">
+                          {art.summary}
+                        </p>
+                        <div className="mt-1.5 text-[11px] text-neutral-500 font-sans">
+                          By <strong>{art.author || art.source}</strong>
+                        </div>
                       </div>
+                      {art.imageUrl && (
+                        <div className="w-24 sm:w-28 shrink-0 aspect-16/10 overflow-hidden bg-neutral-100 mt-1">
+                          <img
+                            src={art.imageUrl}
+                            alt={art.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                            onError={(e: any) => {
+                              e.currentTarget.src = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                            }}
+                          />
+                        </div>
+                      )}
                     </Link>
                   </article>
                 ))}
