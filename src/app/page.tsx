@@ -44,9 +44,8 @@ export default function HomePage({
 
   const leadStory = articles[0];
   const leadSecondary = articles.slice(1, 3);
-  const middleColumn = articles.slice(3, 6);
-  const rightColumn = articles.slice(6, 10);
-  const lowerBroadsheet = articles.slice(10);
+  const middleRow = articles.slice(3, 7);
+  const lowerBroadsheet = articles.slice(7);
 
   return (
     <div className="space-y-10 py-6">
@@ -75,11 +74,11 @@ export default function HomePage({
         </div>
       ) : (
         <>
-          {/* Iconic Washington Post 3-Column Newspaper Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-neutral-300 items-start">
-            {/* Left Column (Main Lead Story + 2 Secondary Dispatches - 6 Cols) */}
+          {/* Featured Headline Banner Row (Lead Story + Editorial Focus) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-8 border-b border-neutral-300">
+            {/* Lead Story (7 Cols) */}
             {leadStory && (
-              <div className="lg:col-span-6 lg:border-r lg:border-neutral-300 lg:pr-8 flex flex-col space-y-6">
+              <div className="lg:col-span-7 lg:border-r lg:border-neutral-300 lg:pr-8">
                 <article className="group">
                   <Link href={`/article/${leadStory.slug}`} className="block">
                     <div className="aspect-16/10 w-full overflow-hidden bg-neutral-100 mb-4">
@@ -105,92 +104,75 @@ export default function HomePage({
                     </div>
                   </Link>
                 </article>
-
-                {/* Secondary dispatches filling left column height perfectly */}
-                {leadSecondary.length > 0 && (
-                  <div className="pt-6 border-t border-neutral-300 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {leadSecondary.map((art) => (
-                      <article key={art.id} className="group">
-                        <Link href={`/article/${art.slug}`} className="block">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
-                            {art.category}
-                          </span>
-                          <h3 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
-                            {art.title}
-                          </h3>
-                          <p className="text-xs font-serif-body text-neutral-600 mt-1.5 line-clamp-2 leading-relaxed">
-                            {art.summary}
-                          </p>
-                          <div className="mt-2 text-[11px] text-neutral-500 font-sans">
-                            By <strong>{art.author || art.source}</strong>
-                          </div>
-                        </Link>
-                      </article>
-                    ))}
-                  </div>
-                )}
               </div>
             )}
 
-            {/* Middle Column (Secondary Top Reports - 3 Cols) */}
-            <div className="lg:col-span-3 lg:border-r lg:border-neutral-300 lg:pr-8 flex flex-col space-y-4 divide-y divide-neutral-200">
-              {middleColumn.map((art) => (
-                <article key={art.id} className="pt-4 first:pt-0 group">
-                  <Link href={`/article/${art.slug}`} className="block">
-                    <div className="aspect-16/10 w-full overflow-hidden bg-neutral-200 mb-2.5">
-                      <img
-                        src={art.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80'}
-                        alt={art.title}
-                        className="w-full h-full object-cover"
-                        onError={(e: any) => {
-                          e.currentTarget.src = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
-                        }}
-                      />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
-                      {art.category}
-                    </span>
-                    <h3 className="text-lg font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
-                      {art.title}
-                    </h3>
-                    <p className="text-xs font-serif-body text-neutral-700 mt-2 line-clamp-2 leading-relaxed">
-                      {art.summary}
-                    </p>
-                    <div className="mt-2 text-[11px] text-neutral-500 font-sans">
-                      {art.source}
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
-
-            {/* Right Column (Opinion & Analysis / Quick Headlines - 3 Cols) */}
-            <div className="lg:col-span-3 flex flex-col space-y-4 divide-y divide-neutral-200">
-              <div className="pb-2 border-b-2 border-black">
+            {/* Side Highlights (5 Cols) */}
+            <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+              <div className="pb-2 border-b-2 border-black flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-widest font-sans text-neutral-900">
-                  Opinions &amp; Analysis
+                  Top Dispatches &amp; Analysis
                 </h3>
+                <span className="text-[10px] font-sans uppercase text-neutral-400">Front Page Briefing</span>
               </div>
-              {rightColumn.map((art) => (
-                <article key={art.id} className="pt-4 first:pt-0 group">
-                  <Link href={`/article/${art.slug}`} className="block">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
-                      {art.category} • Analysis
-                    </span>
-                    <h4 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
-                      {art.title}
-                    </h4>
-                    <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
-                      {art.summary}
-                    </p>
-                    <div className="mt-2 text-[11px] text-neutral-500 font-sans">
-                      By <strong>{art.author || art.source}</strong>
-                    </div>
-                  </Link>
-                </article>
-              ))}
+              <div className="divide-y divide-neutral-200 flex-1 flex flex-col justify-between">
+                {leadSecondary.map((art) => (
+                  <article key={art.id} className="py-4 first:pt-0 last:pb-0 group">
+                    <Link href={`/article/${art.slug}`} className="block">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
+                        {art.category} • Analysis
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                        {art.title}
+                      </h3>
+                      <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
+                        {art.summary}
+                      </p>
+                      <div className="mt-2 text-[11px] text-neutral-500 font-sans">
+                        By <strong>{art.author || art.source}</strong>
+                      </div>
+                    </Link>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
+
+          {/* Secondary Broadsheet Tier: 4-Column Equal News Row */}
+          {middleRow.length > 0 && (
+            <div className="pt-2 pb-8 border-b border-neutral-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+                {middleRow.map((art, idx) => (
+                  <article key={art.id} className={`pt-4 sm:pt-0 ${idx !== 0 ? 'sm:pl-6' : ''} group flex flex-col justify-between`}>
+                    <Link href={`/article/${art.slug}`} className="block">
+                      <div className="aspect-16/10 w-full overflow-hidden bg-neutral-200 mb-2.5">
+                        <img
+                          src={art.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80'}
+                          alt={art.title}
+                          className="w-full h-full object-cover group-hover:scale-102 transition duration-300"
+                          onError={(e: any) => {
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                          }}
+                        />
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
+                        {art.category}
+                      </span>
+                      <h4 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                        {art.title}
+                      </h4>
+                      <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
+                        {art.summary}
+                      </p>
+                    </Link>
+                    <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-500 font-sans">
+                      By <strong>{art.author || art.source}</strong>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Lower Broadsheet: 4-Column Horizontal News Grid */}
           {lowerBroadsheet.length > 0 && (
