@@ -1,20 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --bbc-red: #bb1919;
-  --bbc-dark-red: #8f1313;
-  --bbc-black: #141414;
-  --bbc-grey: #f6f6f6;
-  --bbc-border: #e6e6e6;
+  --wapo-black: #111111;
+  --wapo-dark-grey: #2a2a2a;
+  --wapo-light-grey: #f7f7f7;
+  --wapo-border: #d5d5d5;
+  --wapo-blue: #0056b3;
 }
 
 body {
   background-color: #ffffff;
-  color: #141414;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #111111;
+  font-family: -apple-system, BlinkMacSystemFont, "Franklin Gothic", "Franklin Gothic Medium", Arial, sans-serif;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+.font-masthead {
+  font-family: 'UnifrakturMaguntia', 'Old English Text MT', 'Engravers Old English', 'Georgia', serif;
+}
+
+.font-headline {
+  font-family: 'Postoni', 'Georgia', 'Times New Roman', serif;
+}
+
+.font-serif-body {
+  font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
 }
 
 @keyframes marquee {
