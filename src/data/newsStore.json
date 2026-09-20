@@ -1,0 +1,42 @@
+{
+  "articles": [],
+  "lastUpdated": null,
+  "sources": [
+    {
+      "id": "bbc-world",
+      "name": "BBC World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "category": "World"
+    },
+    {
+      "id": "bbc-tech",
+      "name": "BBC Tech",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+      "category": "Technology"
+    },
+    {
+      "id": "bbc-biz",
+      "name": "BBC Business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "category": "Business"
+    },
+    {
+      "id": "reuters-tech",
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "category": "Technology"
+    },
+    {
+      "id": "espn-sports",
+      "name": "ESPN Top News",
+      "url": "https://www.espn.com/espn/rss/news",
+      "category": "Sports"
+    },
+    {
+      "id": "aljazeera",
+      "name": "Al Jazeera English",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "category": "World"
+    }
+  ]
+}
