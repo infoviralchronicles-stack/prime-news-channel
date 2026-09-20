@@ -131,22 +131,22 @@ export default function HomePage({
             </div>
 
             {/* Right Column (Opinion & Analysis / Quick Headlines - 3 Cols) */}
-            <div className="lg:col-span-3 flex flex-col justify-between divide-y divide-neutral-200">
-              <div className="pb-3 border-b-2 border-black mb-2">
+            <div className="lg:col-span-3 flex flex-col space-y-4 divide-y divide-neutral-200">
+              <div className="pb-2 border-b-2 border-black">
                 <h3 className="text-xs font-bold uppercase tracking-widest font-sans text-neutral-900">
                   Opinions &amp; Analysis
                 </h3>
               </div>
               {rightColumn.map((art) => (
-                <article key={art.id} className="py-4 first:pt-0 last:pb-0 group">
+                <article key={art.id} className="pt-4 first:pt-0 group">
                   <Link href={`/article/${art.slug}`} className="block">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
-                      Analysis
+                      {art.category} • Analysis
                     </span>
                     <h4 className="text-lg font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
                       {art.title}
                     </h4>
-                    <p className="text-xs font-serif-body text-neutral-600 mt-1.5 line-clamp-3 leading-relaxed">
+                    <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
                       {art.summary}
                     </p>
                     <div className="mt-2 text-[11px] text-neutral-500 font-sans">
