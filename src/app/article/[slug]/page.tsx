@@ -2,8 +2,92 @@
 
 import React, { useEffect, useState, use } from 'react';
 import Link from 'next/link';
-import { Clock, ArrowLeft, Share2, ExternalLink, ShieldCheck, Bookmark } from 'lucide-react';
+import { Clock, ArrowLeft, Share2, ExternalLink, ShieldCheck, Tag } from 'lucide-react';
 import { Article } from '@/lib/types';
+
+/**
+ * Parses markdown into beautiful, semantic HTML elements (h2, h3, bold, lists, paragraphs)
+ * eliminating raw '###' or '**' artifacts completely.
+ */
+function renderFormattedContent(rawContent: string) {
+  if (!rawContent) return null;
+
+  // Split by double newlines into blocks
+  const blocks = rawContent.split(/\n\n+/);
+
+  return blocks.map((block, index) => {
+    const trimmed = block.trim();
+    if (!trimmed) return null;
+
+    // Check for H2 or H3
+    if (trimmed.startsWith('### ')) {
+      const headingText = trimmed.replace(/^###\s+/, '');
+      return (
+        <h2
+          key={index}
+          className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] pt-6 pb-2 border-b border-neutral-300 mt-6 tracking-tight"
+        >
+          {headingText}
+        </h2>
+      );
+    }
+
+    if (trimmed.startsWith('## ')) {
+      const headingText = trimmed.replace(/^##\s+/, '');
+      return (
+        <h2
+          key={index}
+          className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] pt-6 pb-2 border-b border-neutral-300 mt-6 tracking-tight"
+        >
+          {headingText}
+        </h2>
+      );
+    }
+
+    // Numbered list item
+    if (/^\d+\.\s+\*\*/.test(trimmed)) {
+      const lines = trimmed.split('\n');
+      return (
+        <div key={index} className="space-y-3 pl-2 sm:pl-4 my-4">
+          {lines.map((line, lIdx) => {
+            const parsedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            return (
+              <div
+                key={lIdx}
+                className="font-serif-body text-base sm:text-lg leading-[1.8] text-neutral-800"
+                dangerouslySetInnerHTML={{ __html: parsedLine }}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+
+    // Bullet list item
+    if (trimmed.startsWith('- ')) {
+      const items = trimmed.split('\n');
+      return (
+        <ul key={index} className="list-disc list-inside space-y-2 my-4 pl-2 font-serif-body text-base sm:text-lg text-neutral-800">
+          {items.map((item, iIdx) => (
+            <li key={iIdx} className="leading-relaxed">
+              {item.replace(/^-+\s*/, '')}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Standard Paragraph with inline bold parsing
+    const formattedParagraph = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    return (
+      <p
+        key={index}
+        className="font-serif-body text-base sm:text-lg text-neutral-800 leading-[1.8] my-4"
+        dangerouslySetInnerHTML={{ __html: formattedParagraph }}
+      />
+    );
+  });
+}
 
 export default function ArticlePage({
   params,
@@ -43,7 +127,7 @@ export default function ArticlePage({
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Article URL copied to clipboard.');
+      alert('Article link copied to clipboard!');
     }
   };
 
@@ -68,8 +152,44 @@ export default function ArticlePage({
     );
   }
 
+  // Structured Data Schema for Google News SEO
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: article.title,
+    description: article.summary,
+    image: [article.imageUrl],
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    author: [
+      {
+        '@type': 'Person',
+        name: article.author || article.source,
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'Prime News Channel',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://primenewschannel.com/icon.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://primenewschannel.com/article/${article.slug}`,
+    },
+  };
+
   return (
     <article className="max-w-4xl mx-auto space-y-6 py-6">
+      {/* Schema.org JSON-LD for Search Engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      {/* Breadcrumbs & Category Tag */}
       <div className="border-b border-neutral-200 pb-3 flex items-center justify-between">
         <Link href="/" className="inline-flex items-center text-xs uppercase tracking-wider font-sans font-bold text-neutral-600 hover:text-black">
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Prime News Channel
@@ -79,38 +199,45 @@ export default function ArticlePage({
         </span>
       </div>
 
-      {/* WaPo Headline */}
-      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-headline text-[#111111] leading-[1.1]">
+      {/* SEO Headline */}
+      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-headline text-[#111111] leading-[1.15]">
         {article.title}
       </h1>
 
       {/* Summary Deck */}
-      <p className="text-lg sm:text-xl font-serif text-neutral-700 leading-relaxed italic border-l-2 border-black pl-4">
+      <p className="text-lg sm:text-xl font-serif text-neutral-700 leading-relaxed italic border-l-3 border-black pl-4">
         {article.summary}
       </p>
 
       {/* Author & Publishing Bylines */}
       <div className="flex flex-wrap items-center justify-between text-xs font-sans text-neutral-600 py-3 border-t border-b border-neutral-200 gap-2">
         <div>
-          <span>By <strong>{article.author || article.source}</strong></span>
+          <span>Reported by <strong className="text-black">{article.author || article.source}</strong></span>
           <span className="mx-2">•</span>
-          <span>{new Date(article.publishedAt).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span>
+            {new Date(article.publishedAt).toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </span>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={handleShare}
-            className="flex items-center space-x-1 font-bold text-neutral-800 hover:text-[#0056b3] cursor-pointer"
-          >
-            <Share2 className="w-3.5 h-3.5" />
-            <span>Share</span>
-          </button>
-        </div>
+        <button
+          onClick={handleShare}
+          className="flex items-center space-x-1 font-bold text-neutral-800 hover:text-[#0056b3] cursor-pointer"
+        >
+          <Share2 className="w-3.5 h-3.5" />
+          <span>Share Article</span>
+        </button>
       </div>
 
       {/* Editorial Featured Media */}
       {article.imageUrl && (
-        <div className="space-y-2">
+        <figure className="space-y-2">
           <div className="aspect-16/10 overflow-hidden bg-neutral-100">
             <img
               src={article.imageUrl}
@@ -118,17 +245,15 @@ export default function ArticlePage({
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-[11px] font-sans text-neutral-500 italic text-right">
-            Wire photo distribution courtesy of {article.source}.
-          </p>
-        </div>
+          <figcaption className="text-[11px] font-sans text-neutral-500 italic text-right">
+            Editorial Wire Photo • Source: {article.source}
+          </figcaption>
+        </figure>
       )}
 
-      {/* Broadsheet Body Content */}
-      <div className="space-y-6 pt-2 max-w-3xl">
-        <div className="text-[#111111] font-serif-body text-lg sm:text-xl leading-[1.8] space-y-6 whitespace-pre-line">
-          {article.content}
-        </div>
+      {/* Formatted Broadsheet Content (Clean Semantic HTML) */}
+      <div className="pt-2 max-w-3xl">
+        {renderFormattedContent(article.content)}
 
         {/* Verification & Syndicate Footnote */}
         <div className="mt-12 pt-6 border-t border-neutral-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#f9f9f9] p-5">
