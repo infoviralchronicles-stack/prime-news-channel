@@ -44,9 +44,9 @@ export default function HomePage({
 
   const leadStory = articles[0];
   const leadSecondary = articles.slice(1, 3);
-  const middleColumn = articles.slice(3, 5);
-  const rightColumn = articles.slice(5, 7);
-  const lowerBroadsheet = articles.slice(7);
+  const middleColumn = articles.slice(3, 6);
+  const rightColumn = articles.slice(6, 10);
+  const lowerBroadsheet = articles.slice(10);
 
   return (
     <div className="space-y-10 py-6">
