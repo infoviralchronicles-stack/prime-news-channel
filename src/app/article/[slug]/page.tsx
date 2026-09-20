@@ -10,34 +10,72 @@ import { Article } from '@/lib/types';
  * eliminating raw '###' or '**' artifacts completely.
  */
 /**
- * Rich editorial styling: Drop-cap on opening paragraph, pull quotes,
- * stylized section dividers, key takeaways callout, and semantic headings.
+ * Semantic HTML renderer supporting H1, H2, H3, H4 headings cleanly
+ * without any red dot/square decorations, symbols, or drop caps.
  */
 function renderFormattedContent(rawContent: string) {
   if (!rawContent) return null;
 
   const blocks = rawContent.split(/\n\n+/);
-  let firstParagraphRendered = false;
 
   return blocks.map((block, index) => {
     const trimmed = block.trim();
     if (!trimmed) return null;
 
-    // Check for H2 or H3 (clean '###', '##', Roman numerals 'III. ', numbers '1. ')
-    if (trimmed.startsWith('### ') || trimmed.startsWith('## ')) {
-      const cleanHeading = trimmed
-        .replace(/^###?\s+/, '')
+    // Helper to clean heading markdown & numbers
+    const cleanHeadingText = (text: string) => {
+      return text
+        .replace(/^#+\s*/, '')
         .replace(/^[IVXLCDM]+\.\s*/i, '')
         .replace(/^\d+\.\s*/, '')
         .trim();
+    };
 
+    // H1 Heading
+    if (trimmed.startsWith('# ')) {
       return (
-        <div key={index} className="pt-8 pb-3 mt-8 border-b-2 border-black/10">
-          <h2 className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] tracking-tight flex items-baseline gap-2.5">
-            <span className="w-2.5 h-2.5 bg-[#b00] inline-block shrink-0"></span>
-            {cleanHeading}
-          </h2>
-        </div>
+        <h1
+          key={index}
+          className="text-3xl sm:text-4xl font-black font-headline text-[#111111] pt-8 pb-3 mt-8 border-b-2 border-black tracking-tight"
+        >
+          {cleanHeadingText(trimmed)}
+        </h1>
+      );
+    }
+
+    // H2 Heading
+    if (trimmed.startsWith('## ')) {
+      return (
+        <h2
+          key={index}
+          className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] pt-8 pb-3 mt-8 border-b border-neutral-300 tracking-tight"
+        >
+          {cleanHeadingText(trimmed)}
+        </h2>
+      );
+    }
+
+    // H3 Heading
+    if (trimmed.startsWith('### ')) {
+      return (
+        <h3
+          key={index}
+          className="text-xl sm:text-2xl font-bold font-headline text-[#222222] pt-6 pb-2 mt-6 tracking-tight"
+        >
+          {cleanHeadingText(trimmed)}
+        </h3>
+      );
+    }
+
+    // H4 Heading
+    if (trimmed.startsWith('#### ')) {
+      return (
+        <h4
+          key={index}
+          className="text-lg sm:text-xl font-bold font-headline text-neutral-800 pt-4 pb-1 mt-4 tracking-normal"
+        >
+          {cleanHeadingText(trimmed)}
+        </h4>
       );
     }
 
@@ -45,13 +83,13 @@ function renderFormattedContent(rawContent: string) {
     if (/^\d+\.\s+\*\*/.test(trimmed)) {
       const lines = trimmed.split('\n');
       return (
-        <div key={index} className="space-y-3 pl-2 sm:pl-4 my-6 border-l-2 border-neutral-300">
+        <div key={index} className="space-y-3 pl-2 sm:pl-4 my-6">
           {lines.map((line, lIdx) => {
             const parsedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
             return (
               <div
                 key={lIdx}
-                className="font-serif-body text-base sm:text-lg leading-[1.85] text-neutral-800 pl-3"
+                className="font-serif-body text-base sm:text-lg leading-[1.85] text-neutral-800"
                 dangerouslySetInnerHTML={{ __html: parsedLine }}
               />
             );
@@ -64,9 +102,9 @@ function renderFormattedContent(rawContent: string) {
     if (trimmed.startsWith('- ')) {
       const items = trimmed.split('\n');
       return (
-        <ul key={index} className="my-6 space-y-2.5 pl-4 font-serif-body text-base sm:text-lg text-neutral-800 border-l-2 border-neutral-300">
+        <ul key={index} className="my-6 space-y-2.5 list-disc list-inside pl-2 font-serif-body text-base sm:text-lg text-neutral-800">
           {items.map((item, iIdx) => (
-            <li key={iIdx} className="leading-relaxed pl-2">
+            <li key={iIdx} className="leading-relaxed">
               {item.replace(/^-+\s*/, '')}
             </li>
           ))}
@@ -78,7 +116,7 @@ function renderFormattedContent(rawContent: string) {
     if (trimmed.startsWith('> ')) {
       const quoteText = trimmed.replace(/^>\s*/, '');
       return (
-        <figure key={index} className="my-8 py-5 px-6 sm:px-8 bg-[#faf7f2] border-l-4 border-[#b00] text-[#111111]">
+        <figure key={index} className="my-8 py-4 px-6 sm:px-8 border-l-4 border-black text-[#111111] bg-neutral-50">
           <blockquote className="font-headline text-xl sm:text-2xl font-bold leading-snug italic">
             "{quoteText}"
           </blockquote>
@@ -86,21 +124,8 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // Standard Paragraph with inline bold parsing
+    // Standard Paragraph with clean typography (No drop cap, no awkward spacing)
     const formattedParagraph = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
-
-    // Apply Drop-Cap to the very first regular body paragraph
-    if (!firstParagraphRendered) {
-      firstParagraphRendered = true;
-      return (
-        <p
-          key={index}
-          className="font-serif-body text-lg sm:text-[1.2rem] text-neutral-900 leading-[1.85] my-5 first-letter:text-5xl first-letter:sm:text-6xl first-letter:font-bold first-letter:float-left first-letter:mr-3.5 first-letter:leading-none first-letter:font-headline first-letter:text-[#111111] first-letter:pt-1"
-          dangerouslySetInnerHTML={{ __html: formattedParagraph }}
-        />
-      );
-    }
-
     return (
       <p
         key={index}
@@ -279,31 +304,7 @@ export default function ArticlePage({
         </figure>
       )}
 
-      {/* Key Editorial Takeaways Card */}
-      <div className="my-6 p-5 sm:p-6 bg-[#f8f9fa] border-l-4 border-black max-w-3xl shadow-xs">
-        <div className="flex items-center space-x-2 mb-3">
-          <span className="w-2.5 h-2.5 bg-[#b00] inline-block"></span>
-          <h3 className="text-xs sm:text-sm font-sans font-bold uppercase tracking-wider text-black">
-            Essential Dispatches • Key Takeaways
-          </h3>
-        </div>
-        <ul className="space-y-2 font-serif text-sm sm:text-base text-neutral-800">
-          <li className="flex items-start">
-            <span className="text-[#b00] font-bold mr-2 text-sm">■</span>
-            <span>Comprehensive primary coverage monitored and distributed continuously by <strong>Prime News Channel</strong>.</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-[#b00] font-bold mr-2 text-sm">■</span>
-            <span>Unbiased reporting verified against authenticated wire sources: <strong>{article.source}</strong>.</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-[#b00] font-bold mr-2 text-sm">■</span>
-            <span>Full investigative narrative below includes historical context, key stakeholder perspectives, and ongoing implications.</span>
-          </li>
-        </ul>
-      </div>
-
-      {/* Formatted Broadsheet Content (Rich Editorial Typography) */}
+      {/* Formatted Broadsheet Content (Clean Semantic HTML with H1, H2, H3, H4) */}
       <div className="pt-2 max-w-3xl">
         {renderFormattedContent(article.content)}
 
