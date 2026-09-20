@@ -19,27 +19,20 @@ function renderFormattedContent(rawContent: string) {
     const trimmed = block.trim();
     if (!trimmed) return null;
 
-    // Check for H2 or H3
-    if (trimmed.startsWith('### ')) {
-      const headingText = trimmed.replace(/^###\s+/, '');
-      return (
-        <h2
-          key={index}
-          className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] pt-6 pb-2 border-b border-neutral-300 mt-6 tracking-tight"
-        >
-          {headingText}
-        </h2>
-      );
-    }
+    // Check for H2 or H3 (strips '###', '##', and any Roman numerals like 'III. ' or numbers '1. ')
+    if (trimmed.startsWith('### ') || trimmed.startsWith('## ')) {
+      const cleanHeading = trimmed
+        .replace(/^###?\s+/, '')
+        .replace(/^[IVXLCDM]+\.\s*/i, '')
+        .replace(/^\d+\.\s*/, '')
+        .trim();
 
-    if (trimmed.startsWith('## ')) {
-      const headingText = trimmed.replace(/^##\s+/, '');
       return (
         <h2
           key={index}
           className="text-2xl sm:text-3xl font-bold font-headline text-[#111111] pt-6 pb-2 border-b border-neutral-300 mt-6 tracking-tight"
         >
-          {headingText}
+          {cleanHeading}
         </h2>
       );
     }
