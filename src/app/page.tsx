@@ -106,17 +106,24 @@ export default function HomePage({
             )}
 
             {/* Middle Column (Secondary Top Reports - 3 Cols) */}
-            <div className="lg:col-span-3 lg:border-r lg:border-neutral-300 lg:pr-8 flex flex-col justify-between divide-y divide-neutral-200">
+            <div className="lg:col-span-3 lg:border-r lg:border-neutral-300 lg:pr-8 flex flex-col space-y-4 divide-y divide-neutral-200">
               {middleColumn.map((art) => (
-                <article key={art.id} className="py-4 first:pt-0 last:pb-0 group">
+                <article key={art.id} className="pt-4 first:pt-0 group">
                   <Link href={`/article/${art.slug}`} className="block">
-                    <div className="aspect-16/10 w-full overflow-hidden bg-neutral-100 mb-2.5">
-                      <img src={art.imageUrl} alt={art.title} className="w-full h-full object-cover" />
+                    <div className="aspect-16/10 w-full overflow-hidden bg-neutral-200 mb-2.5">
+                      <img
+                        src={art.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80'}
+                        alt={art.title}
+                        className="w-full h-full object-cover"
+                        onError={(e: any) => {
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                        }}
+                      />
                     </div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
                       {art.category}
                     </span>
-                    <h3 className="text-xl font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                    <h3 className="text-lg sm:text-xl font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
                       {art.title}
                     </h3>
                     <p className="text-xs font-serif-body text-neutral-700 mt-2 line-clamp-3 leading-relaxed">
