@@ -48,6 +48,8 @@ export default function Header() {
     { name: 'Business & Economy', href: '/?category=Business' },
     { name: 'Technology & Innovations', href: '/?category=Technology' },
     { name: 'Sports', href: '/?category=Sports' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (

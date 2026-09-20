@@ -25,6 +25,16 @@ export default function Footer() {
             </ul>
           </div>
 
+                    <div>
+            <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">About &amp; Company</h4>
+            <ul className="space-y-2 text-neutral-600">
+              <li><Link href="/about" className="hover:underline hover:text-black">About Us</Link></li>
+              <li><Link href="/contact" className="hover:underline hover:text-black">Contact Us</Link></li>
+              <li><Link href="/privacy" className="hover:underline hover:text-black">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:underline hover:text-black">Terms of Service</Link></li>
+            </ul>
+          </div>
+
           <div>
             <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">Newsroom Operations</h4>
             <ul className="space-y-2 text-neutral-600">
