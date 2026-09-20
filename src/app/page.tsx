@@ -43,8 +43,9 @@ export default function HomePage({
   };
 
   const leadStory = articles[0];
-  const middleColumn = articles.slice(1, 4);
-  const rightColumn = articles.slice(4, 7);
+  const leadSecondary = articles.slice(1, 3);
+  const middleColumn = articles.slice(3, 5);
+  const rightColumn = articles.slice(5, 7);
   const lowerBroadsheet = articles.slice(7);
 
   return (
@@ -76,32 +77,58 @@ export default function HomePage({
         <>
           {/* Iconic Washington Post 3-Column Newspaper Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-neutral-300 items-start">
-            {/* Left Column (Main Lead Story - 6 Cols) */}
+            {/* Left Column (Main Lead Story + 2 Secondary Dispatches - 6 Cols) */}
             {leadStory && (
-              <div className="lg:col-span-6 lg:border-r lg:border-neutral-300 lg:pr-8 group">
-                <Link href={`/article/${leadStory.slug}`} className="block">
-                  <div className="aspect-16/10 w-full overflow-hidden bg-neutral-100 mb-4">
-                    <img
-                      src={leadStory.imageUrl}
-                      alt={leadStory.title}
-                      className="w-full h-full object-cover group-hover:opacity-95 transition"
-                    />
+              <div className="lg:col-span-6 lg:border-r lg:border-neutral-300 lg:pr-8 flex flex-col space-y-6">
+                <article className="group">
+                  <Link href={`/article/${leadStory.slug}`} className="block">
+                    <div className="aspect-16/10 w-full overflow-hidden bg-neutral-100 mb-4">
+                      <img
+                        src={leadStory.imageUrl}
+                        alt={leadStory.title}
+                        className="w-full h-full object-cover group-hover:opacity-95 transition"
+                      />
+                    </div>
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#b00] font-sans">
+                      {leadStory.category} • Wire Exclusive
+                    </span>
+                    <h2 className="text-3xl sm:text-5xl font-black font-headline text-[#111111] leading-[1.1] mt-2 group-hover:text-[#0056b3] transition">
+                      {leadStory.title}
+                    </h2>
+                    <p className="text-base sm:text-lg font-serif-body text-[#2a2a2a] mt-3 leading-relaxed">
+                      {leadStory.summary}
+                    </p>
+                    <div className="mt-3 flex items-center text-xs font-sans text-neutral-500 space-x-2">
+                      <span>By <strong>{leadStory.author || leadStory.source}</strong></span>
+                      <span>•</span>
+                      <span>{new Date(leadStory.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                    </div>
+                  </Link>
+                </article>
+
+                {/* Secondary dispatches filling left column height perfectly */}
+                {leadSecondary.length > 0 && (
+                  <div className="pt-6 border-t border-neutral-300 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {leadSecondary.map((art) => (
+                      <article key={art.id} className="group">
+                        <Link href={`/article/${art.slug}`} className="block">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
+                            {art.category}
+                          </span>
+                          <h3 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                            {art.title}
+                          </h3>
+                          <p className="text-xs font-serif-body text-neutral-600 mt-1.5 line-clamp-2 leading-relaxed">
+                            {art.summary}
+                          </p>
+                          <div className="mt-2 text-[11px] text-neutral-500 font-sans">
+                            By <strong>{art.author || art.source}</strong>
+                          </div>
+                        </Link>
+                      </article>
+                    ))}
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-widest text-[#b00] font-sans">
-                    {leadStory.category} • Wire Exclusive
-                  </span>
-                  <h2 className="text-3xl sm:text-5xl font-black font-headline text-[#111111] leading-[1.1] mt-2 group-hover:text-[#0056b3] transition">
-                    {leadStory.title}
-                  </h2>
-                  <p className="text-base sm:text-lg font-serif-body text-[#2a2a2a] mt-3.5 leading-relaxed">
-                    {leadStory.summary}
-                  </p>
-                  <div className="mt-4 flex items-center text-xs font-sans text-neutral-500 space-x-2">
-                    <span>By <strong>{leadStory.author || leadStory.source}</strong></span>
-                    <span>•</span>
-                    <span>{new Date(leadStory.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
-                  </div>
-                </Link>
+                )}
               </div>
             )}
 
