@@ -113,8 +113,16 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
           continue;
         }
 
-        const title = item.title?.trim() || '';
-        if (!title) continue;
+        const rawTitle = item.title?.trim() || '';
+        if (!rawTitle) continue;
+
+        // Ensure title is strictly under 60 characters for SEO optimization
+        let title = rawTitle;
+        if (title.length > 58) {
+          const cut = title.slice(0, 58);
+          const lastSpace = cut.lastIndexOf(' ');
+          title = lastSpace > 30 ? cut.slice(0, lastSpace) : cut;
+        }
 
         const summary = cleanHtml(item.contentSnippet || item.description || item.content || '');
         const rawContent = cleanHtml(item.contentEncoded || item.content || item.description || summary);

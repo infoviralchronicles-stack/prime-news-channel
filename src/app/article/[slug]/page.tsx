@@ -230,7 +230,19 @@ export default function ArticlePage({
 
   return (
     <article className="max-w-4xl mx-auto space-y-6 py-6">
-      {/* Schema.org JSON-LD for Search Engines */}
+      {/* Dynamic SEO Meta Title and Open Graph */}
+      <title>{`${article.title} | Prime News Channel`}</title>
+      <meta name="description" content={article.summary} />
+      <meta property="og:title" content={article.title} />
+      <meta property="og:description" content={article.summary} />
+      <meta property="og:image" content={article.imageUrl} />
+      <meta property="og:url" content={`https://primenewschannel.com/article/${article.slug}`} />
+      <meta name="twitter:title" content={article.title} />
+      <meta name="twitter:description" content={article.summary} />
+      <meta name="twitter:image" content={article.imageUrl} />
+      <link rel="canonical" href={`https://primenewschannel.com/article/${article.slug}`} />
+
+      {/* Schema.org JSON-LD for Google News & Search Engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
