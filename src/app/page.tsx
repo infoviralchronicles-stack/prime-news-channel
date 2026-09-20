@@ -75,7 +75,7 @@ export default function HomePage({
       ) : (
         <>
           {/* Iconic Washington Post 3-Column Newspaper Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-neutral-300">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-neutral-300 items-start">
             {/* Left Column (Main Lead Story - 6 Cols) */}
             {leadStory && (
               <div className="lg:col-span-6 lg:border-r lg:border-neutral-300 lg:pr-8 group">
@@ -123,13 +123,13 @@ export default function HomePage({
                     <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
                       {art.category}
                     </span>
-                    <h3 className="text-lg sm:text-xl font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                    <h3 className="text-lg font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
                       {art.title}
                     </h3>
-                    <p className="text-xs font-serif-body text-neutral-700 mt-2 line-clamp-3 leading-relaxed">
+                    <p className="text-xs font-serif-body text-neutral-700 mt-2 line-clamp-2 leading-relaxed">
                       {art.summary}
                     </p>
-                    <div className="mt-2.5 text-[11px] text-neutral-500 font-sans">
+                    <div className="mt-2 text-[11px] text-neutral-500 font-sans">
                       {art.source}
                     </div>
                   </Link>
@@ -150,7 +150,7 @@ export default function HomePage({
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
                       {art.category} • Analysis
                     </span>
-                    <h4 className="text-lg font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
+                    <h4 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1">
                       {art.title}
                     </h4>
                     <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
