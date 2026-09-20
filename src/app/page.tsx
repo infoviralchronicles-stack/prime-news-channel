@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, use } from 'react';
 import Link from 'next/link';
-import { Clock, TrendingUp, Sparkles, AlertCircle, RefreshCw } from 'lucide-react';
+import { Clock, TrendingUp, Sparkles, AlertCircle, RefreshCw, Zap, ArrowUpRight } from 'lucide-react';
 import { Article } from '@/lib/types';
 
 export default function HomePage({
@@ -36,10 +36,8 @@ export default function HomePage({
       const res = await fetch(url);
       const data = await res.json();
       
-      // If store is empty, trigger initial fetch
       if (!data.articles || data.articles.length === 0) {
         const syncRes = await fetch('/api/news', { method: 'POST' });
-        const syncData = await syncRes.json();
         const retryRes = await fetch(url);
         const retryData = await retryRes.json();
         setArticles(retryData.articles || []);
@@ -55,107 +53,134 @@ export default function HomePage({
     }
   };
 
+  const getCategoryBadgeClass = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'technology':
+        return 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20';
+      case 'business':
+        return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+      case 'world':
+        return 'bg-purple-500/10 text-purple-400 border border-purple-500/20';
+      case 'sports':
+        return 'bg-amber-500/10 text-amber-400 border border-amber-500/20';
+      default:
+        return 'bg-rose-500/10 text-rose-400 border border-rose-500/20';
+    }
+  };
+
   const heroArticle = articles[0];
-  const secondaryHero = articles.slice(1, 4);
-  const trendingArticles = articles.slice(4, 9);
-  const gridArticles = articles.slice(9);
+  const sideArticles = articles.slice(1, 4);
+  const bentoGrid = articles.slice(4, 10);
+  const remainingGrid = articles.slice(10);
 
   return (
-    <div>
-      {/* Search or category indicator */}
+    <div className="space-y-12 pb-16">
+      {/* Category/Query Status */}
       {(query || (currentCategory && currentCategory !== 'All')) && (
-        <div className="mb-6 p-4 bg-slate-100 rounded-lg border border-slate-200 flex items-center justify-between">
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-800">
-              {query ? `Search results for: "${query}"` : `Category: ${currentCategory}`}
+            <h2 className="text-lg font-bold text-white">
+              {query ? `Search: "${query}"` : `Feed: ${currentCategory}`}
             </h2>
-            <p className="text-xs text-slate-500">{articles.length} news articles found</p>
+            <p className="text-xs text-slate-400">{articles.length} news dispatches found</p>
           </div>
-          <Link href="/" className="text-xs font-semibold text-red-600 hover:underline">
-            Clear Filters
+          <Link href="/" className="text-xs font-bold text-cyan-400 hover:text-cyan-300">
+            Clear Filter ×
           </Link>
         </div>
       )}
 
       {loading ? (
-        <div className="py-24 text-center">
-          <RefreshCw className="w-10 h-10 text-red-600 animate-spin mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-slate-800">Loading Latest News...</h3>
-          <p className="text-sm text-slate-500 mt-1">Aggregating live dispatches from verified feeds...</p>
+        <div className="py-32 text-center">
+          <div className="relative w-14 h-14 mx-auto mb-4">
+            <div className="w-14 h-14 rounded-full border-2 border-red-500/20 border-t-red-500 animate-spin" />
+            <Zap className="w-6 h-6 text-red-500 absolute inset-0 m-auto animate-pulse" />
+          </div>
+          <h3 className="text-xl font-black text-white tracking-tight">Syncing Prime News Stream</h3>
+          <p className="text-xs text-slate-400 mt-1">Aggregating real-time verified feeds...</p>
         </div>
       ) : articles.length === 0 ? (
-        <div className="py-20 text-center bg-white rounded-xl border border-slate-200 p-8 shadow-xs">
-          <AlertCircle className="w-12 h-12 text-amber-500 mx-auto mb-3" />
-          <h3 className="text-xl font-bold text-slate-800">No News Found</h3>
-          <p className="text-sm text-slate-500 mt-2 mb-6">No articles currently match your search criteria.</p>
+        <div className="py-20 text-center bg-slate-900 rounded-2xl border border-slate-800 p-8">
+          <AlertCircle className="w-12 h-12 text-amber-400 mx-auto mb-3" />
+          <h3 className="text-xl font-bold text-white">No Stories Found</h3>
+          <p className="text-sm text-slate-400 mt-2 mb-6">No articles currently match your search.</p>
           <button
             onClick={() => loadNews()}
-            className="bg-red-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-red-700 transition cursor-pointer"
+            className="bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-2.5 rounded-full transition cursor-pointer"
           >
-            Refresh Feeds
+            Refresh Feed Stream
           </button>
         </div>
       ) : (
-        <div className="space-y-10">
-          {/* Hero Section */}
+        <>
+          {/* Top Hero Showcase (Bento Style) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Main Lead Story */}
+            {/* Massive Hero Card */}
             {heroArticle && (
-              <div className="lg:col-span-7 group">
-                <Link href={`/article/${heroArticle.slug}`} className="block relative overflow-hidden rounded-xl bg-slate-900 border border-slate-200 shadow-sm aspect-16/10">
+              <div className="lg:col-span-8 group">
+                <Link
+                  href={`/article/${heroArticle.slug}`}
+                  className="block relative h-full min-h-[420px] rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900 shadow-2xl hover:border-slate-700 transition duration-500"
+                >
                   <img
                     src={heroArticle.imageUrl}
                     alt={heroArticle.title}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105 opacity-90"
+                    className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="bg-red-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded uppercase tracking-wider">
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6 sm:p-10">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider ${getCategoryBadgeClass(heroArticle.category)}`}>
                         {heroArticle.category}
                       </span>
-                      <span className="text-slate-300 text-xs flex items-center">
+                      <span className="text-slate-400 text-xs flex items-center font-medium">
                         <Clock className="w-3.5 h-3.5 mr-1" />
-                        {new Date(heroArticle.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                        {new Date(heroArticle.publishedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {heroArticle.source}
                       </span>
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-black text-white leading-snug group-hover:text-red-200 transition">
+
+                    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight group-hover:text-cyan-300 transition duration-300">
                       {heroArticle.title}
                     </h1>
-                    <p className="text-sm text-slate-300 line-clamp-2 mt-2 leading-relaxed">
+
+                    <p className="text-sm sm:text-base text-slate-300 line-clamp-2 mt-3 max-w-3xl leading-relaxed">
                       {heroArticle.summary}
                     </p>
+
+                    <div className="mt-4 flex items-center text-xs font-bold text-cyan-400">
+                      <span>Read Story</span>
+                      <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+                    </div>
                   </div>
                 </Link>
               </div>
             )}
 
-            {/* Side Column: Secondary Stories */}
-            <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-              {secondaryHero.map((art) => (
+            {/* Side Column: 3 Sleek Cards */}
+            <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
+              {sideArticles.map((art, idx) => (
                 <Link
                   key={art.id}
                   href={`/article/${art.slug}`}
-                  className="group flex gap-4 bg-white p-3 rounded-xl border border-slate-200 hover:shadow-md transition"
+                  className="group flex gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800/80 hover:border-cyan-500/40 hover:bg-slate-900 transition duration-300"
                 >
-                  <div className="w-32 h-24 shrink-0 rounded-lg overflow-hidden relative bg-slate-100">
+                  <div className="w-28 h-24 shrink-0 rounded-xl overflow-hidden relative bg-slate-800">
                     <img
                       src={art.imageUrl}
                       alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                     />
                   </div>
                   <div className="flex flex-col justify-between flex-1 min-w-0">
                     <div>
-                      <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider">
-                        {art.category} • {art.source}
+                      <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider mb-1 ${getCategoryBadgeClass(art.category)}`}>
+                        {art.category}
                       </span>
-                      <h3 className="text-sm font-bold text-slate-900 group-hover:text-red-600 transition line-clamp-2 leading-tight mt-1">
+                      <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition line-clamp-2 leading-snug">
                         {art.title}
                       </h3>
                     </div>
-                    <div className="text-[11px] text-slate-600 flex items-center mt-2">
-                      <Clock className="w-3 h-3 mr-1 text-slate-600" />
-                      {new Date(art.publishedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    <div className="text-[10px] text-slate-400 flex items-center mt-1">
+                      <span>{art.source}</span>
                     </div>
                   </div>
                 </Link>
@@ -163,117 +188,66 @@ export default function HomePage({
             </div>
           </div>
 
-          {/* Trending & Main News Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4 border-t border-slate-200">
-            {/* Main Left Columns: Categorized News Feed */}
-            <div className="lg:col-span-8 space-y-6">
-              <div className="flex items-center justify-between border-b-2 border-red-600 pb-2">
-                <h2 className="text-xl font-black uppercase tracking-tight text-slate-900 flex items-center">
-                  <Sparkles className="w-5 h-5 mr-2 text-red-600" /> Latest Feed Stories
+          {/* Bento Grid: Vibrant Modern Visual Stream */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center space-x-2">
+                <Sparkles className="w-5 h-5 text-cyan-400" />
+                <h2 className="text-xl font-black uppercase tracking-tight text-white">
+                  Trending Stream &amp; Analysis
                 </h2>
-                {lastUpdated && (
-                  <span className="text-xs text-slate-600">
-                    Synced: {new Date(lastUpdated).toLocaleTimeString()}
-                  </span>
-                )}
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {gridArticles.map((art) => (
-                  <article key={art.id} className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition flex flex-col">
-                    <Link href={`/article/${art.slug}`} className="block relative aspect-16/9 bg-slate-100 overflow-hidden">
-                      <img
-                        src={art.imageUrl}
-                        alt={art.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                      />
-                      <span className="absolute top-2 left-2 bg-slate-900/80 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">
-                        {art.category}
-                      </span>
-                    </Link>
-                    <div className="p-4 flex-1 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between text-xs text-slate-600 mb-1.5">
-                          <span className="font-semibold text-slate-700">{art.source}</span>
-                          <span className="flex items-center">
-                            <Clock className="w-3 h-3 mr-1" />
-                            {new Date(art.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                          </span>
-                        </div>
-                        <Link href={`/article/${art.slug}`}>
-                          <h3 className="font-bold text-slate-900 group-hover:text-red-600 transition leading-snug line-clamp-2">
-                            {art.title}
-                          </h3>
-                        </Link>
-                        <p className="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
-                          {art.summary}
-                        </p>
-                      </div>
-                      <div className="pt-3 mt-3 border-t border-slate-100 flex justify-between items-center text-xs">
-                        <span className="text-slate-600 font-medium">By {art.author || art.source}</span>
-                        <Link href={`/article/${art.slug}`} className="text-red-600 font-bold hover:underline">
-                          Read Full →
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
+              {lastUpdated && (
+                <span className="text-xs text-slate-400 font-mono">
+                  LIVE SYNC: {new Date(lastUpdated).toLocaleTimeString()}
+                </span>
+              )}
             </div>
 
-            {/* Right Sidebar: Trending & Quick Dispatches */}
-            <div className="lg:col-span-4 space-y-6">
-              {/* Trending Box */}
-              <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
-                <div className="flex items-center space-x-2 border-b border-slate-200 pb-3 mb-4">
-                  <TrendingUp className="w-5 h-5 text-red-600" />
-                  <h3 className="font-black text-slate-900 uppercase tracking-wider text-sm">
-                    Trending Highlights
-                  </h3>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bentoGrid.map((art) => (
+                <Link
+                  key={art.id}
+                  href={`/article/${art.slug}`}
+                  className="group flex flex-col justify-between bg-slate-900/50 rounded-2xl border border-slate-800/80 overflow-hidden hover:border-slate-700 hover:bg-slate-900 transition duration-300 shadow-lg"
+                >
+                  <div className="relative aspect-16/10 overflow-hidden bg-slate-800">
+                    <img
+                      src={art.imageUrl}
+                      alt={art.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
+                    <span className={`absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md ${getCategoryBadgeClass(art.category)}`}>
+                      {art.category}
+                    </span>
+                  </div>
 
-                <div className="divide-y divide-slate-100">
-                  {trendingArticles.map((art, index) => (
-                    <Link
-                      key={art.id}
-                      href={`/article/${art.slug}`}
-                      className="group flex items-start gap-3 py-3"
-                    >
-                      <span className="text-2xl font-black text-slate-300 group-hover:text-red-600 transition font-serif w-6">
-                        0{index + 1}
-                      </span>
-                      <div>
-                        <span className="text-[10px] font-bold text-red-600 uppercase">
-                          {art.category}
-                        </span>
-                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-red-600 transition leading-tight mt-0.5 line-clamp-2">
-                          {art.title}
-                        </h4>
-                        <span className="text-[10px] text-slate-600 mt-1 block">
-                          {art.source} • {new Date(art.publishedAt).toLocaleDateString()}
-                        </span>
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="text-[11px] text-slate-400 flex items-center justify-between mb-2">
+                        <span className="font-semibold">{art.source}</span>
+                        <span>{new Date(art.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
                       </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+                      <h3 className="font-bold text-white group-hover:text-cyan-400 transition text-base leading-snug line-clamp-2">
+                        {art.title}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                        {art.summary}
+                      </p>
+                    </div>
 
-              {/* Promo / Info Box */}
-              <div className="bg-gradient-to-br from-red-600 to-red-800 text-white rounded-xl p-5 shadow-sm">
-                <h4 className="font-black text-lg uppercase tracking-tight">Prime News Channel</h4>
-                <p className="text-xs text-red-100 mt-1.5 leading-relaxed">
-                  Fast, automated and verified 24/7 global coverage aggregated directly for <strong>primenewschannel.com</strong>.
-                </p>
-                <div className="mt-4 pt-3 border-t border-red-500/50 flex justify-between items-center text-xs">
-                  <span className="bg-red-900/60 px-2 py-1 rounded font-mono">Live Sync Engine</span>
-                  <Link href="/admin" className="font-bold underline hover:text-red-200">
-                    Feed Manager →
-                  </Link>
-                </div>
-              </div>
+                    <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs">
+                      <span className="text-slate-500 font-medium">By {art.author || art.source}</span>
+                      <span className="text-cyan-400 font-bold group-hover:underline flex items-center">
+                        Read <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
