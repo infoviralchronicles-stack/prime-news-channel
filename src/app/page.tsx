@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, use } from 'react';
 import Link from 'next/link';
-import { Clock, TrendingUp, Sparkles, AlertCircle, RefreshCw, Zap, ArrowUpRight } from 'lucide-react';
+import { Clock, AlertCircle, RefreshCw } from 'lucide-react';
 import { Article } from '@/lib/types';
 
 export default function HomePage({
@@ -16,7 +16,6 @@ export default function HomePage({
 
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
   useEffect(() => {
     loadNews();
@@ -35,17 +34,7 @@ export default function HomePage({
 
       const res = await fetch(url);
       const data = await res.json();
-      
-      if (!data.articles || data.articles.length === 0) {
-        const syncRes = await fetch('/api/news', { method: 'POST' });
-        const retryRes = await fetch(url);
-        const retryData = await retryRes.json();
-        setArticles(retryData.articles || []);
-        setLastUpdated(retryData.lastUpdated);
-      } else {
-        setArticles(data.articles);
-        setLastUpdated(data.lastUpdated);
-      }
+      setArticles(data.articles || []);
     } catch (e) {
       console.error(e);
     } finally {
@@ -53,200 +42,157 @@ export default function HomePage({
     }
   };
 
-  const getCategoryBadgeClass = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'technology':
-        return 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20';
-      case 'business':
-        return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
-      case 'world':
-        return 'bg-purple-500/10 text-purple-400 border border-purple-500/20';
-      case 'sports':
-        return 'bg-amber-500/10 text-amber-400 border border-amber-500/20';
-      default:
-        return 'bg-rose-500/10 text-rose-400 border border-rose-500/20';
-    }
-  };
-
-  const heroArticle = articles[0];
-  const sideArticles = articles.slice(1, 4);
-  const bentoGrid = articles.slice(4, 10);
-  const remainingGrid = articles.slice(10);
+  const leadStory = articles[0];
+  const sideStories = articles.slice(1, 4);
+  const secondaryStories = articles.slice(4, 8);
+  const gridStories = articles.slice(8);
 
   return (
-    <div className="space-y-12 pb-16">
-      {/* Category/Query Status */}
+    <div className="space-y-8 py-6">
+      {/* Search / Category filter indicator */}
       {(query || (currentCategory && currentCategory !== 'All')) && (
-        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-white">
-              {query ? `Search: "${query}"` : `Feed: ${currentCategory}`}
-            </h2>
-            <p className="text-xs text-slate-400">{articles.length} news dispatches found</p>
-          </div>
-          <Link href="/" className="text-xs font-bold text-cyan-400 hover:text-cyan-300">
-            Clear Filter ×
+        <div className="pb-3 border-b-2 border-black flex items-center justify-between">
+          <h1 className="text-2xl font-black tracking-tight text-[#141414] uppercase">
+            {query ? `Search Results: "${query}"` : currentCategory}
+          </h1>
+          <Link href="/" className="text-xs font-bold text-[#bb1919] hover:underline">
+            View All News →
           </Link>
         </div>
       )}
 
       {loading ? (
-        <div className="py-32 text-center">
-          <div className="relative w-14 h-14 mx-auto mb-4">
-            <div className="w-14 h-14 rounded-full border-2 border-red-500/20 border-t-red-500 animate-spin" />
-            <Zap className="w-6 h-6 text-red-500 absolute inset-0 m-auto animate-pulse" />
-          </div>
-          <h3 className="text-xl font-black text-white tracking-tight">Syncing Prime News Stream</h3>
-          <p className="text-xs text-slate-400 mt-1">Aggregating real-time verified feeds...</p>
+        <div className="py-24 text-center">
+          <RefreshCw className="w-8 h-8 text-[#bb1919] animate-spin mx-auto mb-3" />
+          <p className="text-sm font-bold text-neutral-600">Loading BBC Prime stories...</p>
         </div>
       ) : articles.length === 0 ? (
-        <div className="py-20 text-center bg-slate-900 rounded-2xl border border-slate-800 p-8">
-          <AlertCircle className="w-12 h-12 text-amber-400 mx-auto mb-3" />
-          <h3 className="text-xl font-bold text-white">No Stories Found</h3>
-          <p className="text-sm text-slate-400 mt-2 mb-6">No articles currently match your search.</p>
-          <button
-            onClick={() => loadNews()}
-            className="bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-2.5 rounded-full transition cursor-pointer"
-          >
-            Refresh Feed Stream
-          </button>
+        <div className="py-20 text-center bg-[#f6f6f6] border border-[#e6e6e6] p-8">
+          <AlertCircle className="w-10 h-10 text-neutral-400 mx-auto mb-2" />
+          <h2 className="text-xl font-black text-[#141414]">No Stories Found</h2>
+          <p className="text-xs text-neutral-600 mt-1">Please check back later or refresh feeds.</p>
         </div>
       ) : (
         <>
-          {/* Top Hero Showcase (Bento Style) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Massive Hero Card */}
-            {heroArticle && (
+          {/* Main BBC Hero Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-8 border-b border-[#e6e6e6]">
+            {/* Left Col: Massive BBC Lead Story */}
+            {leadStory && (
               <div className="lg:col-span-8 group">
-                <Link
-                  href={`/article/${heroArticle.slug}`}
-                  className="block relative h-full min-h-[420px] rounded-3xl overflow-hidden border border-slate-800/80 bg-slate-900 shadow-2xl hover:border-slate-700 transition duration-500"
-                >
-                  <img
-                    src={heroArticle.imageUrl}
-                    alt={heroArticle.title}
-                    className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-6 sm:p-10">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <span className={`px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider ${getCategoryBadgeClass(heroArticle.category)}`}>
-                        {heroArticle.category}
-                      </span>
-                      <span className="text-slate-400 text-xs flex items-center font-medium">
-                        <Clock className="w-3.5 h-3.5 mr-1" />
-                        {new Date(heroArticle.publishedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {heroArticle.source}
-                      </span>
-                    </div>
-
-                    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight group-hover:text-cyan-300 transition duration-300">
-                      {heroArticle.title}
-                    </h1>
-
-                    <p className="text-sm sm:text-base text-slate-300 line-clamp-2 mt-3 max-w-3xl leading-relaxed">
-                      {heroArticle.summary}
-                    </p>
-
-                    <div className="mt-4 flex items-center text-xs font-bold text-cyan-400">
-                      <span>Read Story</span>
-                      <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-                    </div>
+                <Link href={`/article/${leadStory.slug}`} className="block">
+                  <div className="aspect-16/9 overflow-hidden bg-neutral-100 mb-4">
+                    <img
+                      src={leadStory.imageUrl}
+                      alt={leadStory.title}
+                      className="w-full h-full object-cover group-hover:scale-102 transition duration-300"
+                    />
+                  </div>
+                  <h2 className="text-2xl sm:text-4xl font-black text-[#141414] leading-tight group-hover:underline decoration-[#bb1919] decoration-2">
+                    {leadStory.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-neutral-700 mt-3 leading-relaxed">
+                    {leadStory.summary}
+                  </p>
+                  <div className="flex items-center text-xs text-neutral-500 font-semibold mt-4 space-x-3">
+                    <span className="flex items-center text-neutral-600">
+                      <Clock className="w-3.5 h-3.5 mr-1" />
+                      {new Date(leadStory.publishedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                    <span>|</span>
+                    <span className="text-[#bb1919] font-bold uppercase">{leadStory.category}</span>
+                    <span>|</span>
+                    <span>{leadStory.source}</span>
                   </div>
                 </Link>
               </div>
             )}
 
-            {/* Side Column: 3 Sleek Cards */}
-            <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
-              {sideArticles.map((art, idx) => (
-                <Link
-                  key={art.id}
-                  href={`/article/${art.slug}`}
-                  className="group flex gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800/80 hover:border-cyan-500/40 hover:bg-slate-900 transition duration-300"
-                >
-                  <div className="w-28 h-24 shrink-0 rounded-xl overflow-hidden relative bg-slate-800">
-                    <img
-                      src={art.imageUrl}
-                      alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between flex-1 min-w-0">
-                    <div>
-                      <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider mb-1 ${getCategoryBadgeClass(art.category)}`}>
-                        {art.category}
-                      </span>
-                      <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-300 transition line-clamp-2 leading-snug">
-                        {art.title}
-                      </h3>
-                    </div>
-                    <div className="text-[10px] text-slate-400 flex items-center mt-1">
+            {/* Right Col: 3 BBC Stacked Stories with Clean Dividers */}
+            <div className="lg:col-span-4 flex flex-col justify-between divide-y divide-[#e6e6e6]">
+              {sideStories.map((art) => (
+                <article key={art.id} className="py-4 first:pt-0 last:pb-0 group">
+                  <Link href={`/article/${art.slug}`} className="block">
+                    <h3 className="text-base sm:text-lg font-black text-[#141414] leading-snug group-hover:underline decoration-[#bb1919]">
+                      {art.title}
+                    </h3>
+                    <p className="text-xs text-neutral-600 mt-2 line-clamp-2 leading-relaxed">
+                      {art.summary}
+                    </p>
+                    <div className="flex items-center text-[11px] text-neutral-500 font-semibold mt-3 space-x-2">
+                      <span className="text-[#bb1919] font-bold uppercase">{art.category}</span>
+                      <span>•</span>
                       <span>{art.source}</span>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </article>
               ))}
             </div>
           </div>
 
-          {/* Bento Grid: Vibrant Modern Visual Stream */}
-          <div className="space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div className="flex items-center space-x-2">
-                <Sparkles className="w-5 h-5 text-cyan-400" />
-                <h2 className="text-xl font-black uppercase tracking-tight text-white">
-                  Trending Stream &amp; Analysis
-                </h2>
-              </div>
-              {lastUpdated && (
-                <span className="text-xs text-slate-400 font-mono">
-                  LIVE SYNC: {new Date(lastUpdated).toLocaleTimeString()}
-                </span>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {bentoGrid.map((art) => (
-                <Link
-                  key={art.id}
-                  href={`/article/${art.slug}`}
-                  className="group flex flex-col justify-between bg-slate-900/50 rounded-2xl border border-slate-800/80 overflow-hidden hover:border-slate-700 hover:bg-slate-900 transition duration-300 shadow-lg"
-                >
-                  <div className="relative aspect-16/10 overflow-hidden bg-slate-800">
-                    <img
-                      src={art.imageUrl}
-                      alt={art.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                    />
-                    <span className={`absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md ${getCategoryBadgeClass(art.category)}`}>
-                      {art.category}
-                    </span>
-                  </div>
-
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="text-[11px] text-slate-400 flex items-center justify-between mb-2">
-                        <span className="font-semibold">{art.source}</span>
-                        <span>{new Date(art.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
+          {/* BBC 4-Column Horizontal Cards Section */}
+          {secondaryStories.length > 0 && (
+            <div className="pb-8 border-b border-[#e6e6e6]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {secondaryStories.map((art) => (
+                  <article key={art.id} className="group">
+                    <Link href={`/article/${art.slug}`} className="block">
+                      <div className="aspect-16/10 overflow-hidden bg-neutral-100 mb-3">
+                        <img
+                          src={art.imageUrl}
+                          alt={art.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        />
                       </div>
-                      <h3 className="font-bold text-white group-hover:text-cyan-400 transition text-base leading-snug line-clamp-2">
+                      <h3 className="text-sm font-black text-[#141414] leading-snug group-hover:underline decoration-[#bb1919] line-clamp-2">
                         {art.title}
                       </h3>
-                      <p className="text-xs text-slate-400 mt-2 line-clamp-3 leading-relaxed">
+                      <p className="text-xs text-neutral-600 mt-1.5 line-clamp-2 leading-relaxed">
                         {art.summary}
                       </p>
-                    </div>
-
-                    <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs">
-                      <span className="text-slate-500 font-medium">By {art.author || art.source}</span>
-                      <span className="text-cyan-400 font-bold group-hover:underline flex items-center">
-                        Read <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                      <div className="flex items-center text-[11px] text-neutral-500 font-semibold mt-2.5 space-x-2">
+                        <span className="text-[#bb1919] font-bold uppercase">{art.category}</span>
+                        <span>•</span>
+                        <span>{new Date(art.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
+                      </div>
+                    </Link>
+                  </article>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* More Stories Grid */}
+          {gridStories.length > 0 && (
+            <div className="space-y-4">
+              <div className="border-b-2 border-black pb-1">
+                <h3 className="text-lg font-black uppercase text-[#141414]">More Top Stories</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {gridStories.map((art) => (
+                  <article key={art.id} className="group border-b border-[#e6e6e6] pb-4">
+                    <Link href={`/article/${art.slug}`} className="block">
+                      <div className="aspect-16/9 overflow-hidden bg-neutral-100 mb-3">
+                        <img
+                          src={art.imageUrl}
+                          alt={art.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                        />
+                      </div>
+                      <h4 className="text-sm font-black text-[#141414] group-hover:underline decoration-[#bb1919] line-clamp-2 leading-snug">
+                        {art.title}
+                      </h4>
+                      <p className="text-xs text-neutral-600 mt-1 line-clamp-2 leading-relaxed">
+                        {art.summary}
+                      </p>
+                      <span className="inline-block text-[11px] font-bold text-[#bb1919] uppercase mt-2">
+                        {art.category} • {art.source}
+                      </span>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>
