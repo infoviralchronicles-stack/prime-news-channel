@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="text-center pb-8 border-b border-neutral-300">
           <h2 className="text-3xl sm:text-4xl font-black font-masthead text-[#111111]">
-            The Prime News Post
+            Prime News Channel
           </h2>
           <p className="italic text-xs text-neutral-500 font-serif mt-1">
             Democracy Dies in Darkness

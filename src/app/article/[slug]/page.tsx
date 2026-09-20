@@ -72,7 +72,7 @@ export default function ArticlePage({
     <article className="max-w-4xl mx-auto space-y-6 py-6">
       <div className="border-b border-neutral-200 pb-3 flex items-center justify-between">
         <Link href="/" className="inline-flex items-center text-xs uppercase tracking-wider font-sans font-bold text-neutral-600 hover:text-black">
-          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> The Prime News Post
+          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Prime News Channel
         </Link>
         <span className="text-xs font-bold uppercase tracking-widest text-[#b00] font-sans">
           {article.category}

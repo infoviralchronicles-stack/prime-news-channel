@@ -84,7 +84,7 @@ export default function Header() {
           {/* Main Gothic Title */}
           <Link href="/" className="inline-block group">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#111111] font-masthead select-none">
-              The Prime News Post
+              Prime News Channel
             </h1>
           </Link>
 
@@ -128,7 +128,7 @@ export default function Header() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search articles..."
+              placeholder="Search Prime News Channel..."
               className="border border-neutral-300 bg-[#f9f9f9] text-xs px-3 py-1.5 pr-8 focus:outline-none focus:bg-white focus:border-black transition w-56 font-sans"
             />
             <button type="submit" className="absolute right-2 text-neutral-500 hover:text-black cursor-pointer">
