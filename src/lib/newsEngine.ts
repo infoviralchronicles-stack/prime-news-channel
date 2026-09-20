@@ -136,11 +136,18 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
         const id = 'pnc-' + Math.random().toString(36).substring(2, 9);
         const slug = `${baseSlug}-${id}`;
 
+        let cleanSummary = summary;
+        if (cleanSummary.length > 135) {
+          const cut = cleanSummary.slice(0, 135);
+          const lastSpace = cut.lastIndexOf(' ');
+          cleanSummary = (lastSpace > 70 ? cut.slice(0, lastSpace) : cut).replace(/[,;:-]+$/, '') + '.';
+        }
+
         const article: Article = {
           id,
           title,
           slug,
-          summary: summary.length > 250 ? summary.substring(0, 247) + '...' : summary,
+          summary: cleanSummary,
           content: comprehensiveContent,
           url: itemUrl,
           imageUrl: imageUrl || `https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&auto=format&fit=crop&q=80`,
