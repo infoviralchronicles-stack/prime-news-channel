@@ -6,9 +6,11 @@ export default function Footer() {
     <footer className="bg-white border-t-4 border-black mt-24 pt-12 pb-10 text-xs font-sans">
       <div className="max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
         <div className="text-center pb-8 border-b border-neutral-300">
-          <h2 className="text-3xl sm:text-4xl font-black font-masthead text-[#111111]">
-            Prime News Channel
-          </h2>
+          <Link href="/" className="inline-block group">
+            <h2 className="text-3xl sm:text-4xl font-black font-masthead text-[#111111] group-hover:text-[#0056b3] transition">
+              Prime News Channel
+            </h2>
+          </Link>
           <p className="italic text-xs text-neutral-500 font-serif mt-1">
             Democracy Dies in Darkness
           </p>
