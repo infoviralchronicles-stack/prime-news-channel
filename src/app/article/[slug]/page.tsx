@@ -308,6 +308,9 @@ export default function ArticlePage({
               src={article.imageUrl}
               alt={article.title}
               className="w-full h-full object-cover"
+              onError={(e: any) => {
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop&q=80';
+              }}
             />
           </div>
           <figcaption className="text-[11px] font-sans text-neutral-500 italic text-right">
