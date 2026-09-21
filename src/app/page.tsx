@@ -188,18 +188,90 @@ export default function HomePage({
             </div>
           )}
 
-          {/* Lower Broadsheet: 4-Column Horizontal News Grid */}
-          {lowerBroadsheet.length > 0 && (
-            <div className="space-y-6 pt-4">
-              <div className="border-b-2 border-black pb-2 flex items-center justify-between">
-                <h3 className="text-xl font-bold font-headline text-[#111111] uppercase tracking-tight">
-                  Comprehensive News Index
-                </h3>
-                <span className="text-xs font-sans text-neutral-500">Autonomous Wire Aggregation</span>
-              </div>
+          {/* Category Sections: 4 Articles Each with 'View All' Link */}
+          {(!currentCategory || currentCategory === 'All') && (
+            <div className="space-y-12 pt-6">
+              {['Technology', 'Business', 'World', 'Health', 'Sports'].map((catName) => {
+                const catArticles = articles.filter(
+                  (a) => a.category.toLowerCase() === catName.toLowerCase()
+                );
+                if (catArticles.length === 0) return null;
+                const displayFour = catArticles.slice(0, 4);
 
+                return (
+                  <section key={catName} className="space-y-5 border-t-2 border-black pt-5">
+                    {/* Category Header Bar */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-baseline space-x-3">
+                        <h3 className="text-xl sm:text-2xl font-black font-headline text-[#111111] uppercase tracking-tight">
+                          {catName === 'Health' ? 'Health & Science' : catName}
+                        </h3>
+                        <span className="text-xs font-sans text-neutral-400">Section Bureau</span>
+                      </div>
+                      <Link
+                        href={`/?category=${encodeURIComponent(catName)}`}
+                        className="text-xs font-sans font-bold uppercase tracking-wider text-[#b00] hover:text-black flex items-center gap-1 group"
+                      >
+                        <span>View All {catName}</span>
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      </Link>
+                    </div>
+
+                    {/* 4 Articles Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+                      {displayFour.map((art, idx) => (
+                        <article
+                          key={art.id}
+                          className={`pt-4 sm:pt-0 ${idx !== 0 ? 'sm:pl-6' : ''} group flex flex-col justify-between`}
+                        >
+                          <Link href={`/article/${art.slug}`} className="block">
+                            <div className="aspect-16/10 w-full overflow-hidden bg-neutral-100 mb-2.5">
+                              <img
+                                src={
+                                  art.imageUrl ||
+                                  'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=800&auto=format&fit=crop&q=80'
+                                }
+                                alt={art.title}
+                                className="w-full h-full object-cover group-hover:scale-102 transition duration-300"
+                                onError={(e: any) => {
+                                  e.currentTarget.src =
+                                    'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                                }}
+                              />
+                            </div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
+                              {art.category}
+                            </span>
+                            <h4 className="text-base font-bold font-headline text-[#111111] leading-snug group-hover:text-[#0056b3] transition mt-1 line-clamp-2">
+                              {art.title}
+                            </h4>
+                            <p className="text-xs font-serif-body text-neutral-600 mt-2 line-clamp-3 leading-relaxed">
+                              {art.summary}
+                            </p>
+                          </Link>
+                          <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-500 font-sans flex items-center justify-between">
+                            <span>By <strong>{art.author || art.source}</strong></span>
+                            <span className="text-neutral-400">
+                              {new Date(art.publishedAt).toLocaleDateString('en-US', {
+                                month: 'short',
+                                day: 'numeric',
+                              })}
+                            </span>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+          )}
+
+          {/* When a Category Filter is selected, display all articles in a paginated/full 4-column grid */}
+          {currentCategory && currentCategory !== 'All' && (
+            <div className="space-y-6 pt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {lowerBroadsheet.map((art) => (
+                {articles.map((art) => (
                   <article key={art.id} className="group border-b border-neutral-200 pb-6 flex flex-col justify-between">
                     <Link href={`/article/${art.slug}`} className="block">
                       <div className="aspect-16/10 overflow-hidden bg-neutral-100 mb-3">
@@ -209,7 +281,7 @@ export default function HomePage({
                           className="w-full h-full object-cover group-hover:scale-103 transition duration-300"
                         />
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 font-sans">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#b00] font-sans">
                         {art.category}
                       </span>
                       <h4 className="text-base font-bold font-headline text-[#111111] group-hover:text-[#0056b3] transition mt-1 line-clamp-3 leading-snug">
@@ -220,7 +292,7 @@ export default function HomePage({
                       </p>
                     </Link>
                     <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-400 font-sans flex justify-between">
-                      <span>{art.source}</span>
+                      <span>By <strong>{art.author || art.source}</strong></span>
                       <span>{new Date(art.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                     </div>
                   </article>
