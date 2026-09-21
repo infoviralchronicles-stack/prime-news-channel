@@ -160,12 +160,13 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
               return rawAuthor;
             }
             const correspondents: Record<string, string[]> = {
-              Technology: ['Marcus Vance', 'Elena Rostova', 'Dr. Rachel Thorne'],
-              Business: ['Sarah Jenkins', 'Alexander Wright', 'Jonathan Miller'],
-              World: ['Julian Sterling', 'Alistair Bennett', 'Claire Delacroix'],
-              Sports: ['David Vance', 'Michael Gallagher', 'Liam O\'Connor'],
-              Entertainment: ['Sophia Martinez', 'Harrison Blake', 'Chloe Adams'],
-              General: ['Julian Sterling', 'Sarah Jenkins', 'Marcus Vance'],
+              Technology: ['Marcus Vance', 'Elena Rostova', 'Dr. Rachel Thorne', 'Nolan Price', 'Clara Hughes'],
+              Business: ['Sarah Jenkins', 'Alexander Wright', 'Jonathan Miller', 'Evelyn Carter', 'Brandon Cole'],
+              World: ['Julian Sterling', 'Alistair Bennett', 'Claire Delacroix', 'Arthur Pendelton', 'Maya Lin'],
+              Health: ['Dr. Rachel Thorne', 'Julian Sterling', 'Miriam Vance', 'Nathaniel Reed', 'Sarah Jenkins'],
+              Sports: ['David Vance', 'Michael Gallagher', 'Liam O\'Connor', 'Travis Fletcher', 'Lucas Vance'],
+              Entertainment: ['Sophia Martinez', 'Harrison Blake', 'Chloe Adams', 'Olivia Hayes'],
+              General: ['Julian Sterling', 'Sarah Jenkins', 'Elena Rostova', 'Marcus Vance'],
             };
             const list = correspondents[source.category] || correspondents['General'];
             return list[Math.floor(Math.random() * list.length)];
