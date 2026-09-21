@@ -65,18 +65,8 @@ export default function Header() {
             </span>
           </div>
 
-          <div className="flex items-center space-x-5">
-            <button
-              onClick={handleManualSync}
-              disabled={isSyncing}
-              className="flex items-center bg-black hover:bg-neutral-800 text-white px-3 py-1 rounded-xs font-semibold uppercase tracking-wider text-[10px] transition cursor-pointer disabled:opacity-50"
-            >
-              <RefreshCw className={`w-3 h-3 mr-1.5 ${isSyncing ? 'animate-spin' : ''}`} />
-              {isSyncing ? 'Updating Edition...' : 'Fetch Wire Feeds'}
-            </button>
-            <Link href="/admin" className="hover:text-black font-semibold flex items-center">
-              <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Newsroom Admin
-            </Link>
+          <div className="text-[10px] uppercase tracking-widest font-mono text-neutral-500">
+            Independent Digital Newsstand
           </div>
         </div>
       </div>
