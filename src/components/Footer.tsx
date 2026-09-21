@@ -37,18 +37,19 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">Newsroom Operations</h4>
+            <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">Verification &amp; Ethics</h4>
             <ul className="space-y-2 text-neutral-600">
-              <li><Link href="/admin" className="hover:underline hover:text-black">Admin Panel</Link></li>
-              <li><Link href="/admin" className="hover:underline hover:text-black">RSS Feeds Sync</Link></li>
-              <li><a href="https://primenewschannel.com" className="hover:underline hover:text-black">primenewschannel.com</a></li>
+              <li><Link href="/about" className="hover:underline hover:text-black">Fact-Checking Policy</Link></li>
+              <li><Link href="/terms" className="hover:underline hover:text-black">Corrections Policy</Link></li>
+              <li><Link href="/privacy" className="hover:underline hover:text-black">Privacy Protection</Link></li>
+              <li><Link href="/contact" className="hover:underline hover:text-black">Report a Correction</Link></li>
             </ul>
           </div>
 
-          <div className="col-span-2">
-            <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">Editorial Standards</h4>
+          <div>
+            <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">Editorial Mission</h4>
             <p className="text-neutral-600 leading-relaxed text-xs font-serif">
-              <strong>primenewschannel.com</strong> is operated under the Washington Post-inspired investigative broadsheet paradigm. Articles are programmatically aggregated, checked against duplicate fingerprints, and curated around the clock.
+              <strong>primenewschannel.com</strong> delivers unbiased, verified, around-the-clock investigative journalism covering global affairs, economic shifts, emerging technologies, and health sciences.
             </p>
           </div>
         </div>
