@@ -30,16 +30,17 @@ body {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  display: inline-block;
+  display: inline-flex;
   white-space: nowrap;
-  animation: marquee 35s linear infinite;
+  animation: marquee 28s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+

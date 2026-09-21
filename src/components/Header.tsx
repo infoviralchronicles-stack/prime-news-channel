@@ -4,8 +4,37 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 
+// Default headlines available immediately at render so the ticker is instant without delay
+const INITIAL_BREAKING = [
+  {
+    title: "Global AI Safety Summit Enforces Real-Time Testing",
+    slug: "global-ai-safety-summit-enforces-real-time-testing-pnc-01",
+    source: "Prime Global Wire",
+  },
+  {
+    title: "Solid-State Grid Batteries Achieve Commercial Scale",
+    slug: "solid-state-grid-batteries-achieve-commercial-scale-pnc-02",
+    source: "Prime Global Wire",
+  },
+  {
+    title: "Central Banks Signal Broad Monetary Stabilization",
+    slug: "central-banks-signal-broad-monetary-stabilization-pnc-03",
+    source: "Prime Global Wire",
+  },
+  {
+    title: "Deep Space Array Detects Habitable Super-Earth",
+    slug: "deep-space-array-detects-habitable-super-earth-pnc-04",
+    source: "Prime Global Wire",
+  },
+  {
+    title: "Universal mRNA Cancer Vaccine Enters Phase III Trials",
+    slug: "universal-mrna-cancer-vaccine-enters-phase-iii-trials-pnc-05",
+    source: "Prime Global Wire",
+  },
+];
+
 export default function Header() {
-  const [breaking, setBreaking] = useState<any[]>([]);
+  const [breaking, setBreaking] = useState<any[]>(INITIAL_BREAKING);
   const [isSyncing, setIsSyncing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [todayDate, setTodayDate] = useState('');
@@ -20,8 +49,8 @@ export default function Header() {
     try {
       const res = await fetch('/api/news?limit=10');
       const data = await res.json();
-      if (data.articles) {
-        setBreaking(data.articles.filter((a: any) => a.isBreaking || true).slice(0, 5));
+      if (data.articles && data.articles.length > 0) {
+        setBreaking(data.articles.slice(0, 5));
       }
     } catch (e) {
       console.error(e);
@@ -139,16 +168,31 @@ export default function Header() {
               <span className="w-2 h-2 rounded-full bg-[#b00] mr-1.5 animate-pulse" /> Breaking News:
             </span>
             <div className="relative overflow-hidden w-full">
-              <div className="animate-marquee whitespace-nowrap font-serif text-neutral-800 space-x-12">
-                {breaking.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    href={`/article/${item.slug}`}
-                    className="hover:underline hover:text-[#0056b3] inline-block mr-12 font-medium"
-                  >
-                    {item.title} <span className="text-neutral-400 font-sans text-[11px]">({item.source})</span>
-                  </Link>
-                ))}
+              <div className="animate-marquee whitespace-nowrap font-serif text-neutral-800 flex items-center">
+                {/* First set of breaking headlines */}
+                <div className="flex items-center space-x-12 shrink-0 pr-12">
+                  {breaking.map((item, idx) => (
+                    <Link
+                      key={`b1-${idx}`}
+                      href={`/article/${item.slug}`}
+                      className="hover:underline hover:text-[#0056b3] inline-block font-medium"
+                    >
+                      {item.title} <span className="text-neutral-400 font-sans text-[11px]">({item.source})</span>
+                    </Link>
+                  ))}
+                </div>
+                {/* Duplicated set for seamless continuous marquee loop */}
+                <div className="flex items-center space-x-12 shrink-0 pr-12" aria-hidden="true">
+                  {breaking.map((item, idx) => (
+                    <Link
+                      key={`b2-${idx}`}
+                      href={`/article/${item.slug}`}
+                      className="hover:underline hover:text-[#0056b3] inline-block font-medium"
+                    >
+                      {item.title} <span className="text-neutral-400 font-sans text-[11px]">({item.source})</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
