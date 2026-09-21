@@ -19,8 +19,9 @@ export default function Footer() {
             <h4 className="font-bold text-neutral-900 uppercase tracking-wider mb-3">News Sections</h4>
             <ul className="space-y-2 text-neutral-600">
               <li><Link href="/?category=World" className="hover:underline hover:text-black">World</Link></li>
-              <li><Link href="/?category=Business" className="hover:underline hover:text-black">Business &amp; Finance</Link></li>
-              <li><Link href="/?category=Technology" className="hover:underline hover:text-black">Technology &amp; Science</Link></li>
+              <li><Link href="/?category=Business" className="hover:underline hover:text-black">Business</Link></li>
+              <li><Link href="/?category=Technology" className="hover:underline hover:text-black">Technology</Link></li>
+              <li><Link href="/?category=Health" className="hover:underline hover:text-black">Health &amp; Science</Link></li>
               <li><Link href="/?category=Sports" className="hover:underline hover:text-black">Sports</Link></li>
             </ul>
           </div>

@@ -45,11 +45,12 @@ export default function Header() {
   const sections = [
     { name: 'Home', href: '/' },
     { name: 'World', href: '/?category=World' },
-    { name: 'Business & Economy', href: '/?category=Business' },
-    { name: 'Technology & Innovations', href: '/?category=Technology' },
+    { name: 'Business', href: '/?category=Business' },
+    { name: 'Technology', href: '/?category=Technology' },
+    { name: 'Health & Science', href: '/?category=Health' },
     { name: 'Sports', href: '/?category=Sports' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
