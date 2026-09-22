@@ -7,28 +7,28 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
-    title: "Global AI Safety Summit Enforces Real-Time Testing",
-    slug: "global-ai-safety-summit-enforces-real-time-testing-pnc-01",
+    title: "UN Leaders Ratify Historic Pact for the Future",
+    slug: "un-leaders-ratify-historic-pact-for-the-future-pnc-01",
     source: "Prime Global Wire",
   },
   {
-    title: "Solid-State Grid Batteries Achieve Commercial Scale",
-    slug: "solid-state-grid-batteries-achieve-commercial-scale-pnc-02",
+    title: "Next-Gen Optical Neural Chips Slash AI Data Power",
+    slug: "next-gen-optical-neural-chips-slash-ai-data-power-pnc-02",
     source: "Prime Global Wire",
   },
   {
-    title: "Central Banks Signal Broad Monetary Stabilization",
-    slug: "central-banks-signal-broad-monetary-stabilization-pnc-03",
+    title: "Global Sovereign Debt Markets Stabilize Post Cuts",
+    slug: "global-sovereign-debt-markets-stabilize-post-cuts-pnc-03",
     source: "Prime Global Wire",
   },
   {
-    title: "Deep Space Array Detects Habitable Super-Earth",
-    slug: "deep-space-array-detects-habitable-super-earth-pnc-04",
+    title: "WHO & ITU Launch Joint AI Chronic Care Framework",
+    slug: "who-itu-launch-joint-ai-chronic-care-framework-pnc-04",
     source: "Prime Global Wire",
   },
   {
-    title: "Universal mRNA Cancer Vaccine Enters Phase III Trials",
-    slug: "universal-mrna-cancer-vaccine-enters-phase-iii-trials-pnc-05",
+    title: "Autonomous Optical Tracking Reshapes Pro Sports",
+    slug: "autonomous-optical-tracking-reshapes-pro-sports-pnc-05",
     source: "Prime Global Wire",
   },
 ];
