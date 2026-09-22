@@ -206,7 +206,6 @@ export default function HomePage({
                         <h3 className="text-xl sm:text-2xl font-black font-headline text-[#111111] uppercase tracking-tight">
                           {catName === 'Health' ? 'Health & Science' : catName}
                         </h3>
-                        <span className="text-xs font-sans text-neutral-400">Section Bureau</span>
                       </div>
                       <Link
                         href={`/?category=${encodeURIComponent(catName)}`}
