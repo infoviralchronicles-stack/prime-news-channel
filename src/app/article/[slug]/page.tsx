@@ -4,6 +4,7 @@ import React, { useEffect, useState, use } from 'react';
 import Link from 'next/link';
 import { Clock, ArrowLeft, Share2, ExternalLink, ShieldCheck, Tag } from 'lucide-react';
 import { Article } from '@/lib/types';
+import { getAuthorSlug, getAuthorProfile } from '@/lib/authors';
 
 /**
  * Parses markdown into beautiful, semantic HTML elements (h2, h3, bold, lists, paragraphs)
@@ -271,7 +272,19 @@ export default function ArticlePage({
       {/* Author & Publishing Bylines with Reading Time & Word Count */}
       <div className="flex flex-wrap items-center justify-between text-xs font-sans text-neutral-600 py-3.5 border-t border-b border-neutral-300 gap-3">
         <div className="flex flex-wrap items-center gap-y-1">
-          <span>Reported by <strong className="text-black font-semibold">{article.author || article.source}</strong></span>
+          <span>
+            Reported by{' '}
+            {article.author ? (
+              <Link
+                href={`/author/${getAuthorSlug(article.author)}`}
+                className="text-black font-bold hover:text-[#0056b3] hover:underline transition"
+              >
+                {article.author}
+              </Link>
+            ) : (
+              <strong className="text-black font-semibold">{article.source}</strong>
+            )}
+          </span>
           <span className="mx-2 text-neutral-400">•</span>
           <span>
             {new Date(article.publishedAt).toLocaleDateString('en-US', {
@@ -322,6 +335,46 @@ export default function ArticlePage({
       {/* Formatted Broadsheet Content (Clean Semantic HTML with H1, H2, H3, H4) */}
       <div className="pt-2 max-w-3xl">
         {renderFormattedContent(article.content)}
+
+        {/* Correspondent Profile Bio Card */}
+        {article.author && (() => {
+          const authorProfile = getAuthorProfile(article.author);
+          return (
+            <div className="my-10 p-6 bg-[#fbfbfb] border border-neutral-300 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+              <Link href={`/author/${authorProfile.slug}`} className="shrink-0 group">
+                <img
+                  src={authorProfile.avatar}
+                  alt={authorProfile.name}
+                  className="w-20 h-20 rounded-full object-cover border border-neutral-400 group-hover:border-black transition shadow-sm"
+                />
+              </Link>
+              <div className="flex-1 text-center sm:text-left space-y-1.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <Link
+                    href={`/author/${authorProfile.slug}`}
+                    className="font-headline font-bold text-lg sm:text-xl text-[#111111] hover:text-[#0056b3] transition"
+                  >
+                    About {authorProfile.name}
+                  </Link>
+                  <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#b00]">
+                    {authorProfile.role}
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm font-serif-body text-neutral-700 leading-relaxed">
+                  {authorProfile.bio}
+                </p>
+                <div className="pt-1">
+                  <Link
+                    href={`/author/${authorProfile.slug}`}
+                    className="text-xs font-sans font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                  >
+                    View All Dispatches by {authorProfile.name} →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Verification & Syndicate Footnote */}
         <div className="mt-12 pt-6 border-t border-neutral-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#f9f9f9] p-5">

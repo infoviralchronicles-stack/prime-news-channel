@@ -4,6 +4,7 @@ import React, { useEffect, useState, use } from 'react';
 import Link from 'next/link';
 import { Clock, AlertCircle, RefreshCw } from 'lucide-react';
 import { Article } from '@/lib/types';
+import { getAuthorSlug } from '@/lib/authors';
 
 export default function HomePage({
   searchParams,
@@ -97,12 +98,24 @@ export default function HomePage({
                     <p className="text-base sm:text-lg font-serif-body text-[#2a2a2a] mt-3 leading-relaxed">
                       {leadStory.summary}
                     </p>
-                    <div className="mt-3 flex items-center text-xs font-sans text-neutral-500 space-x-2">
-                      <span>By <strong>{leadStory.author || leadStory.source}</strong></span>
-                      <span>•</span>
-                      <span>{new Date(leadStory.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
-                    </div>
                   </Link>
+                  <div className="mt-3 flex items-center text-xs font-sans text-neutral-500 space-x-2">
+                    <span>
+                      By{' '}
+                      {leadStory.author ? (
+                        <Link
+                          href={`/author/${getAuthorSlug(leadStory.author)}`}
+                          className="font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                        >
+                          {leadStory.author}
+                        </Link>
+                      ) : (
+                        <strong>{leadStory.source}</strong>
+                      )}
+                    </span>
+                    <span>•</span>
+                    <span>{new Date(leadStory.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
                 </article>
               </div>
             )}
@@ -129,9 +142,6 @@ export default function HomePage({
                         <p className="text-xs font-serif-body text-neutral-600 mt-1 line-clamp-2 leading-relaxed">
                           {art.summary}
                         </p>
-                        <div className="mt-1.5 text-[11px] text-neutral-500 font-sans">
-                          By <strong>{art.author || art.source}</strong>
-                        </div>
                       </div>
                       {art.imageUrl && (
                         <div className="w-24 sm:w-28 shrink-0 aspect-16/10 overflow-hidden bg-neutral-100 mt-1">
@@ -146,6 +156,19 @@ export default function HomePage({
                         </div>
                       )}
                     </Link>
+                    <div className="mt-1.5 text-[11px] text-neutral-500 font-sans">
+                      By{' '}
+                      {art.author ? (
+                        <Link
+                          href={`/author/${getAuthorSlug(art.author)}`}
+                          className="font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                        >
+                          {art.author}
+                        </Link>
+                      ) : (
+                        <strong>{art.source}</strong>
+                      )}
+                    </div>
                   </article>
                 ))}
               </div>
@@ -180,7 +203,17 @@ export default function HomePage({
                       </p>
                     </Link>
                     <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-500 font-sans">
-                      By <strong>{art.author || art.source}</strong>
+                      By{' '}
+                      {art.author ? (
+                        <Link
+                          href={`/author/${getAuthorSlug(art.author)}`}
+                          className="font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                        >
+                          {art.author}
+                        </Link>
+                      ) : (
+                        <strong>{art.source}</strong>
+                      )}
                     </div>
                   </article>
                 ))}
@@ -259,7 +292,19 @@ export default function HomePage({
                             </p>
                           </Link>
                           <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-500 font-sans flex items-center justify-between">
-                            <span>By <strong>{art.author || art.source}</strong></span>
+                            <span>
+                              By{' '}
+                              {art.author ? (
+                                <Link
+                                  href={`/author/${getAuthorSlug(art.author)}`}
+                                  className="font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                                >
+                                  {art.author}
+                                </Link>
+                              ) : (
+                                <strong>{art.source}</strong>
+                              )}
+                            </span>
                             <span className="text-neutral-400">
                               {new Date(art.publishedAt).toLocaleDateString('en-US', {
                                 month: 'short',
@@ -301,7 +346,19 @@ export default function HomePage({
                       </p>
                     </Link>
                     <div className="mt-3 pt-2 border-t border-neutral-100 text-[11px] text-neutral-400 font-sans flex justify-between">
-                      <span>By <strong>{art.author || art.source}</strong></span>
+                      <span>
+                        By{' '}
+                        {art.author ? (
+                          <Link
+                            href={`/author/${getAuthorSlug(art.author)}`}
+                            className="font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
+                          >
+                            {art.author}
+                          </Link>
+                        ) : (
+                          <strong>{art.source}</strong>
+                        )}
+                      </span>
                       <span>{new Date(art.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                     </div>
                   </article>

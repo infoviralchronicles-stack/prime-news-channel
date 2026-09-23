@@ -5,10 +5,20 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const category = searchParams.get('category');
   const query = searchParams.get('q');
+  const author = searchParams.get('author');
   const limit = parseInt(searchParams.get('limit') || '50', 10);
 
   const store = getStoreData();
   let filtered = store.articles;
+
+  if (author) {
+    const aLower = author.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    filtered = filtered.filter(a => {
+      if (!a.author) return false;
+      const slug = a.author.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      return slug.includes(aLower) || a.author.toLowerCase().includes(author.toLowerCase());
+    });
+  }
 
   if (category && category.toLowerCase() !== 'all') {
     const target = category.toLowerCase();
