@@ -57,6 +57,9 @@ export const metadata: Metadata = {
     description: 'Autonomous, 24/7 in-depth world, business, and technology reporting.',
     images: ['https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&auto=format&fit=crop&q=80'],
   },
+  verification: {
+    google: '55IT5k1SzlSjYYf9SNqe9UfZbsfG4rRv1M9oa5qhdPw',
+  },
   robots: {
     index: true,
     follow: true,
@@ -121,6 +124,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-site-verification" content="55IT5k1SzlSjYYf9SNqe9UfZbsfG4rRv1M9oa5qhdPw" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
