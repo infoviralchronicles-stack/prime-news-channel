@@ -7,29 +7,29 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
-    title: "UN General Assembly Opens with Urgent Security Call",
-    slug: "un-general-assembly-opens-with-urgent-security-call-pnc-01",
-    source: "Prime Global Wire",
+    title: "US & Iran Hold Direct Talks After Escalation Warning",
+    slug: "us-iran-hold-direct-talks-escalation-warning-2026",
+    source: "BBC News International",
   },
   {
-    title: "AI Smart Glasses Face Global Regulatory Pushback",
-    slug: "ai-smart-glasses-face-global-regulatory-pushback-pnc-02",
-    source: "Prime Global Wire",
+    title: "US Challenges Australia Proposed Algorithm Opt-Out",
+    slug: "us-challenges-australia-algorithm-opt-out-laws-2026",
+    source: "BBC Technology Wire",
   },
   {
-    title: "Climate Finance Mobilizes Record Private Capital",
-    slug: "climate-finance-mobilizes-record-private-capital-pnc-03",
-    source: "Prime Global Wire",
+    title: "OECD Trims UK Growth Forecast Amid Price Pressures",
+    slug: "oecd-trims-uk-growth-forecast-price-pressures-2026",
+    source: "BBC Business & OECD",
   },
   {
-    title: "Bilingual AI Telehealth Expands Global Care Access",
-    slug: "bilingual-ai-telehealth-expands-global-care-access-pnc-04",
-    source: "Prime Global Wire",
+    title: "Slow-Release Nerve Block Delivers Weeks of Pain Relief",
+    slug: "slow-release-nerve-block-delivers-weeks-pain-relief-2026",
+    source: "MedicalXpress Health Wire",
   },
   {
-    title: "Formula One AI Telemetry Balances Human Instinct",
-    slug: "formula-one-ai-telemetry-balances-human-instinct-pnc-05",
-    source: "Prime Global Wire",
+    title: "Isack Hadjar Confirmed as Verstappen Red Bull Teammate",
+    slug: "isack-hadjar-confirmed-verstappen-red-bull-teammate-2027",
+    source: "Sky Sports F1 Official",
   },
 ];
 
