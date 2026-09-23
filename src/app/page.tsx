@@ -191,27 +191,37 @@ export default function HomePage({
           {/* Category Sections: 4 Articles Each with 'View All' Link */}
           {(!currentCategory || currentCategory === 'All') && (
             <div className="space-y-12 pt-6">
-              {['Technology', 'Business', 'World', 'Health', 'Sports'].map((catName) => {
-                const catArticles = articles.filter(
-                  (a) => a.category.toLowerCase() === catName.toLowerCase()
-                );
+              {[
+                { name: 'Technology', label: 'Technology', filterKey: 'Technology' },
+                { name: 'Business', label: 'Business', filterKey: 'Business' },
+                { name: 'World', label: 'World', filterKey: 'World' },
+                { name: 'Health & Science', label: 'Health & Science', filterKey: 'Health' },
+                { name: 'Sports', label: 'Sports', filterKey: 'Sports' },
+              ].map((section) => {
+                const catArticles = articles.filter((a) => {
+                  const cat = (a.category || '').toLowerCase();
+                  if (section.filterKey === 'Health') {
+                    return cat.includes('health') || cat.includes('science');
+                  }
+                  return cat === section.filterKey.toLowerCase();
+                });
                 if (catArticles.length === 0) return null;
                 const displayFour = catArticles.slice(0, 4);
 
                 return (
-                  <section key={catName} className="space-y-5 border-t-2 border-black pt-5">
+                  <section key={section.name} className="space-y-5 border-t-2 border-black pt-5">
                     {/* Category Header Bar */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-baseline space-x-3">
                         <h3 className="text-xl sm:text-2xl font-black font-headline text-[#111111] uppercase tracking-tight">
-                          {catName === 'Health' ? 'Health & Science' : catName}
+                          {section.label}
                         </h3>
                       </div>
                       <Link
-                        href={`/?category=${encodeURIComponent(catName)}`}
+                        href={`/?category=${encodeURIComponent(section.filterKey)}`}
                         className="text-xs font-sans font-bold uppercase tracking-wider text-[#b00] hover:text-black flex items-center gap-1 group"
                       >
-                        <span>View All {catName}</span>
+                        <span>View All {section.label}</span>
                         <span className="group-hover:translate-x-1 transition-transform">→</span>
                       </Link>
                     </div>

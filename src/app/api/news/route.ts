@@ -11,7 +11,14 @@ export async function GET(request: Request) {
   let filtered = store.articles;
 
   if (category && category.toLowerCase() !== 'all') {
-    filtered = filtered.filter(a => a.category.toLowerCase() === category.toLowerCase());
+    const target = category.toLowerCase();
+    filtered = filtered.filter(a => {
+      const artCat = (a.category || '').toLowerCase();
+      if (target === 'health' || target === 'health & science') {
+        return artCat.includes('health') || artCat.includes('science');
+      }
+      return artCat === target;
+    });
   }
 
   if (query) {
