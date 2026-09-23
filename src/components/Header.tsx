@@ -7,28 +7,28 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
-    title: "UN Leaders Ratify Historic Pact for the Future",
-    slug: "un-leaders-ratify-historic-pact-for-the-future-pnc-01",
+    title: "UN General Assembly Opens with Urgent Security Call",
+    slug: "un-general-assembly-opens-with-urgent-security-call-pnc-01",
     source: "Prime Global Wire",
   },
   {
-    title: "Next-Gen Optical Neural Chips Slash AI Data Power",
-    slug: "next-gen-optical-neural-chips-slash-ai-data-power-pnc-02",
+    title: "AI Smart Glasses Face Global Regulatory Pushback",
+    slug: "ai-smart-glasses-face-global-regulatory-pushback-pnc-02",
     source: "Prime Global Wire",
   },
   {
-    title: "Global Sovereign Debt Markets Stabilize Post Cuts",
-    slug: "global-sovereign-debt-markets-stabilize-post-cuts-pnc-03",
+    title: "Climate Finance Mobilizes Record Private Capital",
+    slug: "climate-finance-mobilizes-record-private-capital-pnc-03",
     source: "Prime Global Wire",
   },
   {
-    title: "WHO & ITU Launch Joint AI Chronic Care Framework",
-    slug: "who-itu-launch-joint-ai-chronic-care-framework-pnc-04",
+    title: "Bilingual AI Telehealth Expands Global Care Access",
+    slug: "bilingual-ai-telehealth-expands-global-care-access-pnc-04",
     source: "Prime Global Wire",
   },
   {
-    title: "Autonomous Optical Tracking Reshapes Pro Sports",
-    slug: "autonomous-optical-tracking-reshapes-pro-sports-pnc-05",
+    title: "Formula One AI Telemetry Balances Human Instinct",
+    slug: "formula-one-ai-telemetry-balances-human-instinct-pnc-05",
     source: "Prime Global Wire",
   },
 ];
