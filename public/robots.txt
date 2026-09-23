@@ -1,4 +1,21 @@
+# https://primenewschannel.com robots.txt
 User-agent: *
+Allow: /
+Disallow: /api/
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Allow: /article/
+Allow: /author/
+
+# Google News specific
+User-agent: Googlebot-News
+Allow: /
+Allow: /article/
+
+# Bingbot
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://primenewschannel.com/sitemap.xml

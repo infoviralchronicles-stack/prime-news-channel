@@ -200,33 +200,47 @@ export default function ArticlePage({
     );
   }
 
-  // Structured Data Schema for Google News SEO
+  const authorSlug = getAuthorSlug(article.author || 'Jonathan Vance');
+  const authorProfile = getAuthorProfile(authorSlug);
+
+  // High-Grade Structured Data Schema for Google News, Google Discover & Rich Snippets
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
-    headline: article.title,
-    description: article.summary,
-    image: [article.imageUrl],
-    datePublished: article.publishedAt,
-    dateModified: article.publishedAt,
-    author: [
-      {
-        '@type': 'Person',
-        name: article.author || article.source,
-      },
-    ],
-    publisher: {
-      '@type': 'Organization',
-      name: 'Prime News Channel',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://primenewschannel.com/icon.png',
-      },
-    },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://primenewschannel.com/article/${article.slug}`,
     },
+    headline: article.title,
+    description: article.summary,
+    image: [
+      article.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&auto=format&fit=crop&q=80',
+    ],
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    articleSection: article.category,
+    inLanguage: 'en-US',
+    wordCount: article.content ? article.content.split(/\s+/).length : 1100,
+    author: [
+      {
+        '@type': 'Person',
+        name: authorProfile.name,
+        jobTitle: authorProfile.role,
+        url: `https://primenewschannel.com/author/${authorProfile.slug}`,
+      },
+    ],
+    publisher: {
+      '@type': 'NewsMediaOrganization',
+      name: 'Prime News Channel',
+      url: 'https://primenewschannel.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://primenewschannel.com/favicon.svg',
+        width: 64,
+        height: 64,
+      },
+    },
+    isAccessibleForFree: true,
   };
 
   return (

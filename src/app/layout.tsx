@@ -75,14 +75,47 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'NewsMediaOrganization',
-    name: 'Prime News Channel',
-    url: 'https://primenewschannel.com',
-    logo: 'https://primenewschannel.com/icon.png',
-    sameAs: ['https://primenewschannel.com'],
-  };
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'NewsMediaOrganization',
+      name: 'Prime News Channel',
+      alternateName: 'Prime News',
+      url: 'https://primenewschannel.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://primenewschannel.com/favicon.svg',
+        width: 64,
+        height: 64,
+      },
+      sameAs: [
+        'https://primenewschannel.com',
+        'https://x.com/PrimeNewsWire',
+      ],
+      publishingPrinciples: 'https://primenewschannel.com/about',
+      ethicsPolicy: 'https://primenewschannel.com/privacy',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'editorial newsroom',
+        email: 'contact@primenewschannel.com',
+        url: 'https://primenewschannel.com/contact',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Prime News Channel',
+      url: 'https://primenewschannel.com',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://primenewschannel.com/?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ];
 
   return (
     <html lang="en">

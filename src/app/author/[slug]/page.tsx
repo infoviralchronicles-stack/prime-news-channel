@@ -46,8 +46,40 @@ export default function AuthorPage({
     );
   }
 
+  const profileSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: {
+      '@type': 'Person',
+      name: profile.name,
+      jobTitle: profile.role,
+      description: profile.bio,
+      image: profile.avatar,
+      worksFor: {
+        '@type': 'NewsMediaOrganization',
+        name: 'Prime News Channel',
+        url: 'https://primenewschannel.com',
+      },
+      url: `https://primenewschannel.com/author/${profile.slug}`,
+    },
+  };
+
   return (
     <div className="space-y-10 py-6 max-w-5xl mx-auto">
+      {/* Dynamic SEO Meta Title and Open Graph */}
+      <title>{`${profile.name} - ${profile.role} | Prime News Channel`}</title>
+      <meta name="description" content={profile.bio} />
+      <meta property="og:title" content={`${profile.name} | Prime News Channel`} />
+      <meta property="og:description" content={profile.bio} />
+      <meta property="og:image" content={profile.avatar} />
+      <meta property="og:url" content={`https://primenewschannel.com/author/${profile.slug}`} />
+      <link rel="canonical" href={`https://primenewschannel.com/author/${profile.slug}`} />
+
+      {/* Schema.org JSON-LD ProfilePage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }}
+      />
       {/* Breadcrumb Navigation */}
       <div className="border-b border-neutral-200 pb-3 flex items-center justify-between">
         <Link
