@@ -10,3 +10,4 @@ yarn-error.log*
 .env.production.local
 .DS_Store
 .vercel
+.env*
