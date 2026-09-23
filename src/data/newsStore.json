@@ -215,39 +215,38 @@
   "sources": [
     {
       "id": "bbc-world",
-      "name": "BBC World",
+      "name": "BBC World News",
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
-      "category": "World"
+      "category": "World",
+      "enabled": true
     },
     {
       "id": "bbc-tech",
-      "name": "BBC Tech",
+      "name": "BBC Technology",
       "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
-      "category": "Technology"
+      "category": "Technology",
+      "enabled": true
     },
     {
-      "id": "bbc-biz",
+      "id": "bbc-business",
       "name": "BBC Business",
       "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
-      "category": "Business"
+      "category": "Business",
+      "enabled": true
     },
     {
-      "id": "reuters-tech",
-      "name": "TechCrunch",
-      "url": "https://techcrunch.com/feed/",
-      "category": "Technology"
+      "id": "bbc-health",
+      "name": "BBC Health",
+      "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
+      "category": "General",
+      "enabled": true
     },
     {
-      "id": "espn-sports",
-      "name": "ESPN Top News",
-      "url": "https://www.espn.com/espn/rss/news",
-      "category": "Sports"
-    },
-    {
-      "id": "aljazeera",
-      "name": "Al Jazeera English",
-      "url": "https://www.aljazeera.com/xml/rss/all.xml",
-      "category": "World"
+      "id": "bbc-sport",
+      "name": "BBC Sport",
+      "url": "https://feeds.bbci.co.uk/sport/rss.xml",
+      "category": "Sports",
+      "enabled": true
     }
   ]
 }

@@ -100,15 +100,22 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
   const existingIds = new Set(store.articles.map(a => a.id));
 
   const newArticles: Article[] = [];
+  const MAX_DAILY_TOPICS = 5;
 
   for (const source of store.sources) {
     if (source.enabled === false) continue;
+    if (newArticles.length >= MAX_DAILY_TOPICS) break;
+
     try {
       const feed = await parser.parseURL(source.url);
       if (!feed.items) continue;
 
       for (const item of feed.items) {
-        const itemUrl = item.link || item.guid || '';
+        if (newArticles.length >= MAX_DAILY_TOPICS) break;
+
+        // Clean link to point directly to reference article (strip tracking params)
+        const rawUrl = item.link || item.guid || '';
+        const itemUrl = rawUrl.split('?')[0].trim();
         if (!itemUrl || existingUrls.has(itemUrl)) {
           continue;
         }
@@ -127,7 +134,7 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
         const summary = cleanHtml(item.contentSnippet || item.description || item.content || '');
         const rawContent = cleanHtml(item.contentEncoded || item.content || item.description || summary);
         
-        // Expand to 1000 - 1200 words
+        // Expand to 1000 - 1200 words comprehensive broadsheet standard
         const comprehensiveContent = expandToBroadsheetStandard(title, summary, rawContent, source.category, source.name);
         
         const imageUrl = extractImage(item);
@@ -155,18 +162,13 @@ export async function fetchAndPublishNews(): Promise<{ newCount: number; totalCo
           category: source.category,
           publishedAt: publishedDate,
           author: (() => {
-            const rawAuthor = (item.creator || '').trim();
-            if (rawAuthor && !/bureau|wire|desk|editorial|team|reuters|ap|bbc|bloomberg|cnn|wsj/i.test(rawAuthor)) {
-              return rawAuthor;
-            }
             const correspondents: Record<string, string[]> = {
-              Technology: ['Marcus Vance', 'Elena Rostova', 'Dr. Rachel Thorne', 'Nolan Price', 'Clara Hughes'],
-              Business: ['Sarah Jenkins', 'Alexander Wright', 'Jonathan Miller', 'Evelyn Carter', 'Brandon Cole'],
-              World: ['Julian Sterling', 'Alistair Bennett', 'Claire Delacroix', 'Arthur Pendelton', 'Maya Lin'],
-              Health: ['Dr. Rachel Thorne', 'Julian Sterling', 'Miriam Vance', 'Nathaniel Reed', 'Sarah Jenkins'],
-              Sports: ['David Vance', 'Michael Gallagher', 'Liam O\'Connor', 'Travis Fletcher', 'Lucas Vance'],
-              Entertainment: ['Sophia Martinez', 'Harrison Blake', 'Chloe Adams', 'Olivia Hayes'],
-              General: ['Julian Sterling', 'Sarah Jenkins', 'Elena Rostova', 'Marcus Vance'],
+              Technology: ['Elena Rostova'],
+              Business: ['Marcus Sterling', 'Sarah Jenkins'],
+              World: ['Jonathan Vance', 'Julian Sterling'],
+              Health: ['Dr. Rachel Bennett'],
+              Sports: ['Nathan Cross'],
+              General: ['Jonathan Vance', 'Dr. Rachel Bennett']
             };
             const list = correspondents[source.category] || correspondents['General'];
             return list[Math.floor(Math.random() * list.length)];
