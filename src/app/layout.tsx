@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: 'Prime News Channel - 24/7 Global Breaking, Business & Tech Journalism',
     template: '%s | Prime News Channel',
   },
-  description: 'Democracy Dies in Darkness. Official autonomous publication of primenewschannel.com. In-depth world, business, technology and political investigative reporting.',
+  description: 'Official independent publication of primenewschannel.com. In-depth world, business, technology, health and sports reporting.',
   keywords: [
     'Prime News Channel',
     'Prime News',

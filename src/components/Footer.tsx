@@ -21,9 +21,6 @@ export default function Footer() {
               Prime News Channel
             </h2>
           </Link>
-          <p className="italic text-xs text-neutral-500 font-serif mt-1">
-            Democracy Dies in Darkness
-          </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-8 border-b border-neutral-200">

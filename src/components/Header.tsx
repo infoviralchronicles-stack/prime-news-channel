@@ -109,15 +109,6 @@ export default function Header() {
               Prime News Channel
             </h1>
           </Link>
-
-          {/* Famous Motto */}
-          <p className="italic text-xs sm:text-sm text-neutral-600 font-serif tracking-widest mt-1.5 font-light">
-            Democracy Dies in Darkness
-          </p>
-
-          <div className="text-[11px] uppercase tracking-widest text-neutral-500 font-mono mt-1">
-            Global Digital Broadsheet • Official Edition
-          </div>
         </div>
       </div>
 
