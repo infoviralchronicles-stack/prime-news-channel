@@ -27,6 +27,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://primenewschannel.com',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/favicon.svg' },
+    ],
+  },
   openGraph: {
     title: 'Prime News Channel - Global Breaking, Business & Tech Journalism',
     description: 'Autonomous, 24/7 in-depth world, business, technology and investigative reporting.',
