@@ -12,29 +12,24 @@ const INITIAL_BREAKING = [
     source: "BBC Technology Wire",
   },
   {
-    title: "US & Iran Hold Direct Talks After Escalation Warning",
-    slug: "us-iran-hold-direct-talks-escalation-warning-2026",
-    source: "BBC News International",
+    title: "Trump & Xi Summit Focuses on AI Superpower Race",
+    slug: "trump-xi-summit-focuses-on-ai-superpower-race-2026",
+    source: "BBC World Service",
   },
   {
-    title: "US Challenges Australia Proposed Algorithm Opt-Out",
-    slug: "us-challenges-australia-algorithm-opt-out-laws-2026",
-    source: "BBC Technology Wire",
+    title: "Iran President Defiant on Regional Sovereignty",
+    slug: "iran-president-defiant-on-regional-sovereignty-2026",
+    source: "BBC World Service",
   },
   {
-    title: "OECD Trims UK Growth Forecast Amid Price Pressures",
-    slug: "oecd-trims-uk-growth-forecast-price-pressures-2026",
-    source: "BBC Business & OECD",
+    title: "NHS Probes Breach into Patient Medical Records",
+    slug: "nhs-probes-breach-into-patient-medical-records-2026",
+    source: "BBC Health",
   },
   {
-    title: "Slow-Release Nerve Block Delivers Weeks of Pain Relief",
-    slug: "slow-release-nerve-block-delivers-weeks-pain-relief-2026",
-    source: "MedicalXpress Health Wire",
-  },
-  {
-    title: "Isack Hadjar Confirmed as Verstappen Red Bull Teammate",
-    slug: "isack-hadjar-confirmed-verstappen-red-bull-teammate-2027",
-    source: "Sky Sports F1 Official",
+    title: "Carlos Alcaraz Targets Return Ahead of Laver Cup",
+    slug: "carlos-alcaraz-targets-return-ahead-of-laver-cup-2026",
+    source: "BBC Sport",
   },
 ];
 
