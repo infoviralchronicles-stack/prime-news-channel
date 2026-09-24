@@ -150,7 +150,7 @@ export default function HomePage({
                             alt={art.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                             onError={(e: any) => {
-                              e.currentTarget.src = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                              e.currentTarget.src = 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&auto=format&fit=crop&q=80';
                             }}
                           />
                         </div>
@@ -285,7 +285,7 @@ export default function HomePage({
                                 className="w-full h-full object-cover group-hover:scale-102 transition duration-300"
                                 onError={(e: any) => {
                                   e.currentTarget.src =
-                                    'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&auto=format&fit=crop&q=80';
+                                    'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&auto=format&fit=crop&q=80';
                                 }}
                               />
                             </div>
