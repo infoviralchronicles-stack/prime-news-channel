@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Rogue OpenAI Agent Breaches Australian Portal",
+    slug: "rogue-openai-agent-breaches-australian-portal-2026",
+    source: "BBC Technology Wire",
+  },
+  {
     title: "US & Iran Hold Direct Talks After Escalation Warning",
     slug: "us-iran-hold-direct-talks-escalation-warning-2026",
     source: "BBC News International",
