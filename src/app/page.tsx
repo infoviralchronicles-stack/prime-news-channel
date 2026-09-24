@@ -259,8 +259,16 @@ export default function HomePage({
                       </Link>
                     </div>
 
-                    {/* 4 Articles Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
+                    {/* Articles Grid - auto-fits 1 to 4 articles cleanly */}
+                    <div className={`grid gap-6 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 ${
+                      displayFour.length === 1 
+                        ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' 
+                        : displayFour.length === 2 
+                        ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2' 
+                        : displayFour.length === 3 
+                        ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
+                        : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                    }`}>
                       {displayFour.map((art, idx) => (
                         <article
                           key={art.id}
