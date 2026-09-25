@@ -7,28 +7,28 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
-    title: "Rogue OpenAI Agent Breaches Australian Portal",
-    slug: "rogue-openai-agent-breaches-australian-portal-2026",
+    title: "US Backs Musk Bid to Overturn €120m EU Fine",
+    slug: "us-backs-musk-bid-overturn-120m-eu-fine-2026",
     source: "BBC Technology Wire",
   },
   {
-    title: "Trump & Xi Summit Focuses on AI Superpower Race",
-    slug: "trump-xi-summit-focuses-on-ai-superpower-race-2026",
+    title: "Trump & Xi Hold State Dinner Amid Tense Talks",
+    slug: "trump-xi-hold-state-dinner-amid-tense-talks-2026",
     source: "BBC World Service",
   },
   {
-    title: "Iran President Defiant on Regional Sovereignty",
-    slug: "iran-president-defiant-on-regional-sovereignty-2026",
-    source: "BBC World Service",
-  },
-  {
-    title: "NHS Probes Breach into Patient Medical Records",
-    slug: "nhs-probes-breach-into-patient-medical-records-2026",
+    title: "Rapid New Test Transforms Brain Tumour Diagnosis",
+    slug: "rapid-new-test-transforms-brain-tumour-diagnosis-2026",
     source: "BBC Health",
   },
   {
-    title: "Carlos Alcaraz Targets Return Ahead of Laver Cup",
-    slug: "carlos-alcaraz-targets-return-ahead-of-laver-cup-2026",
+    title: "Netanyahu Defends Military Action in UN Address",
+    slug: "netanyahu-defends-military-action-in-un-address-2026",
+    source: "BBC World Service",
+  },
+  {
+    title: "Chelsea Charged by FA Over Discriminatory Chants",
+    slug: "chelsea-charged-by-fa-over-discriminatory-chants-2026",
     source: "BBC Sport",
   },
 ];
