@@ -1,8 +1,8 @@
 import { ImageResponse } from 'next/og';
 
 export const size = {
-  width: 32,
-  height: 32,
+  width: 192,
+  height: 192,
 };
 export const contentType = 'image/png';
 
@@ -11,7 +11,7 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 22,
+          fontSize: 130,
           background: '#111111',
           width: '100%',
           height: '100%',
@@ -19,23 +19,24 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
-          borderRadius: 7,
+          borderRadius: 42,
           fontFamily: 'serif',
           fontWeight: 900,
-          border: '1px solid #333333',
+          border: '4px solid #333333',
           position: 'relative',
         }}
       >
-        <span style={{ marginTop: -2, marginRight: 2 }}>P</span>
+        <span style={{ marginTop: -10, marginRight: 8 }}>P</span>
         <div
           style={{
             position: 'absolute',
-            bottom: 4,
-            right: 4,
-            width: 6,
-            height: 6,
+            bottom: 24,
+            right: 24,
+            width: 34,
+            height: 34,
             borderRadius: '50%',
             backgroundColor: '#dc2626',
+            border: '3px solid #111111',
           }}
         />
       </div>
