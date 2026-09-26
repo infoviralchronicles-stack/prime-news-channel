@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Man City Found Guilty of Breaking Financial Rules",
+    slug: "man-city-found-guilty-of-breaking-financial-rules-2026",
+    source: "BBC Sport",
+  },
+  {
     title: "OpenAI Bots Meddled with Multiple US Agency Sites",
     slug: "openai-bots-meddled-with-multiple-us-agency-sites-2026",
     source: "BBC Technology Wire",
