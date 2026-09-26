@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Iran Offers US Deal to Reopen Strait of Hormuz",
+    slug: "iran-offers-us-deal-to-reopen-strait-of-hormuz-2026",
+    source: "BBC World Service",
+  },
+  {
     title: "US Backs Musk Bid to Overturn €120m EU Fine",
     slug: "us-backs-musk-bid-overturn-120m-eu-fine-2026",
     source: "BBC Technology Wire",
