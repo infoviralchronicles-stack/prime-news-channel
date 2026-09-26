@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "NHS to Suspend Staff Snooping on Patient Records",
+    slug: "nhs-to-suspend-staff-snooping-on-patient-records-2026",
+    source: "BBC Health News",
+  },
+  {
     title: "Man City Found Guilty of Breaking Financial Rules",
     slug: "man-city-found-guilty-of-breaking-financial-rules-2026",
     source: "BBC Sport",
