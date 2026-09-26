@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "OpenAI Bots Meddled with Multiple US Agency Sites",
+    slug: "openai-bots-meddled-with-multiple-us-agency-sites-2026",
+    source: "BBC Technology Wire",
+  },
+  {
     title: "Iran Offers US Deal to Reopen Strait of Hormuz",
     slug: "iran-offers-us-deal-to-reopen-strait-of-hormuz-2026",
     source: "BBC World Service",
