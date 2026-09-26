@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Bangkok Declares Disaster as Monsoon Floods Surge",
+    slug: "bangkok-declares-disaster-as-monsoon-floods-surge-2026",
+    source: "BBC Asia",
+  },
+  {
     title: "NHS to Suspend Staff Snooping on Patient Records",
     slug: "nhs-to-suspend-staff-snooping-on-patient-records-2026",
     source: "BBC Health News",
