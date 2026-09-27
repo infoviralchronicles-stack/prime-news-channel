@@ -23,17 +23,19 @@ function renderFormattedContent(rawContent: string) {
     const trimmed = block.trim();
     if (!trimmed) return null;
 
-    // Helper to clean heading markdown & numbers
+    // Helper to clean heading markdown, html tags & numbers
     const cleanHeadingText = (text: string) => {
       return text
+        .replace(/^<h[1-6][^>]*>/i, '')
+        .replace(/<\/h[1-6]>$/i, '')
         .replace(/^#+\s*/, '')
         .replace(/^[IVXLCDM]+\.\s*/i, '')
         .replace(/^\d+\.\s*/, '')
         .trim();
     };
 
-    // H1 Heading
-    if (trimmed.startsWith('# ')) {
+    // H1 Heading (Markdown # or <h1>)
+    if (trimmed.startsWith('# ') || /^<h1[^>]*>/i.test(trimmed)) {
       return (
         <h1
           key={index}
@@ -44,8 +46,8 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H2 Heading
-    if (trimmed.startsWith('## ')) {
+    // H2 Heading (Markdown ## or <h2>)
+    if (trimmed.startsWith('## ') || /^<h2[^>]*>/i.test(trimmed)) {
       return (
         <h2
           key={index}
@@ -56,8 +58,8 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H3 Heading
-    if (trimmed.startsWith('### ')) {
+    // H3 Heading (Markdown ### or <h3>)
+    if (trimmed.startsWith('### ') || /^<h3[^>]*>/i.test(trimmed)) {
       return (
         <h3
           key={index}
@@ -68,8 +70,8 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H4 Heading
-    if (trimmed.startsWith('#### ')) {
+    // H4 Heading (Markdown #### or <h4>)
+    if (trimmed.startsWith('#### ') || /^<h4[^>]*>/i.test(trimmed)) {
       return (
         <h4
           key={index}
@@ -77,6 +79,24 @@ function renderFormattedContent(rawContent: string) {
         >
           {cleanHeadingText(trimmed)}
         </h4>
+      );
+    }
+
+    // HTML List <ul> or <ol>
+    if (/^<ul[^>]*>/i.test(trimmed) || /^<ol[^>]*>/i.test(trimmed)) {
+      const listItems = trimmed
+        .replace(/^<[uo]l[^>]*>/i, '')
+        .replace(/<\/[uo]l>$/i, '')
+        .split(/<\/li>/i)
+        .map(item => item.replace(/<li[^>]*>/i, '').trim())
+        .filter(item => item.length > 0);
+
+      return (
+        <ul key={index} className="my-6 space-y-2.5 list-disc list-inside pl-2 font-serif-body text-base sm:text-lg text-neutral-800">
+          {listItems.map((item, iIdx) => (
+            <li key={iIdx} className="leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
+          ))}
+        </ul>
       );
     }
 
@@ -125,8 +145,10 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // Standard Paragraph with clean typography (No drop cap, no awkward spacing)
-    const formattedParagraph = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
+    // Standard Paragraph with clean typography
+    // Strip wrapping <p> and </p> if present
+    const cleanParagraph = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '');
+    const formattedParagraph = cleanParagraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
     return (
       <p
         key={index}
