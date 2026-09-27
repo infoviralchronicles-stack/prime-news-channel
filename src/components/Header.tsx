@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Trump Administration Rejects 7-Day Strait of Hormuz Peace Accord as Iran Weighs Retaliation",
+    slug: "trump-administration-rejects-7-day-strait-of-hormuz-peace-accord-2026",
+    source: "BBC World Service",
+  },
+  {
     title: "Bangkok Declares Disaster as Monsoon Floods Surge",
     slug: "bangkok-declares-disaster-as-monsoon-floods-surge-2026",
     source: "BBC Asia",
