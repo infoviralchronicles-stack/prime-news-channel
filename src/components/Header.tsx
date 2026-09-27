@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Nepal Tunnel Workers Rescued Alive After Nine Days in Flooded Hydropower Plant",
+    slug: "nepal-tunnel-workers-rescued-alive-after-nine-days-in-flooded-hydropower-2026",
+    source: "BBC Asia News",
+  },
+  {
     title: "NHS Mandates Biometric Access for Patient Health Records Following Privacy Probe",
     slug: "nhs-mandates-biometric-access-for-patient-health-records-2026",
     source: "BBC Health News",
