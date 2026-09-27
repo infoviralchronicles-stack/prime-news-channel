@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Global Borrowing Costs Hit 15-Year Peak as Central Banks Hold Interest Rates Firm",
+    slug: "global-borrowing-costs-hit-15-year-peak-as-central-banks-hold-rates-2026",
+    source: "BBC Business News",
+  },
+  {
     title: "US Rebrands AI as 'Super Intelligence' at UN Summit, Opposing Global Controls",
     slug: "us-rebrands-ai-as-super-intelligence-at-un-summit-2026",
     source: "BBC Technology News",
