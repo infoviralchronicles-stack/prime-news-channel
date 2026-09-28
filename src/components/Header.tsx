@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "EU Antitrust Regulators Launch Formal Probe into US Frontier AI Cloud Computing Bundles",
+    slug: "eu-antitrust-regulators-launch-formal-probe-into-us-ai-cloud-bundles-2026",
+    source: "BBC Technology News",
+  },
+  {
     title: "Five Arrested Near RAF Fairford Base Over Suspected Explosives Plot as Counter-Terror Police Probe Foreign Links",
     slug: "five-arrested-near-raf-fairford-suspected-explosives-plot-2026",
     source: "BBC World Service",
