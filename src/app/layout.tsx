@@ -103,7 +103,7 @@ export default function RootLayout({
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'editorial newsroom',
-        email: 'contact@primenewschannel.com',
+        email: 'info.viralchronicles@gmail.com',
         url: 'https://primenewschannel.com/contact',
       },
     },

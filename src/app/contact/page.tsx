@@ -44,8 +44,13 @@ export default function ContactPage() {
             <div className="flex items-start space-x-3 text-xs text-neutral-700">
               <Mail className="w-4 h-4 text-[#b00] shrink-0 mt-0.5" />
               <div>
-                <strong className="block text-neutral-900 font-semibold">Editorial Desk:</strong>
-                <span>editorial@primenewschannel.com</span>
+                <strong className="block text-neutral-900 font-semibold">Editorial Desk &amp; Inquiries:</strong>
+                <a
+                  href="mailto:info.viralchronicles@gmail.com"
+                  className="text-neutral-700 hover:text-black hover:underline font-mono"
+                >
+                  info.viralchronicles@gmail.com
+                </a>
               </div>
             </div>
 
