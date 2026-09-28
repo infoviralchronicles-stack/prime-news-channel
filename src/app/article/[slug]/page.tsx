@@ -145,10 +145,17 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
+    // Helper to format inline markdown (bold & links)
+    const formatInlineMarkdown = (text: string) => {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>')
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-black font-semibold underline decoration-neutral-400 underline-offset-4 hover:decoration-black hover:text-[#990000] transition-colors">$1</a>');
+    };
+
     // Standard Paragraph with clean typography
     // Strip wrapping <p> and </p> if present
     const cleanParagraph = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '');
-    const formattedParagraph = cleanParagraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
+    const formattedParagraph = formatInlineMarkdown(cleanParagraph);
     return (
       <p
         key={index}
