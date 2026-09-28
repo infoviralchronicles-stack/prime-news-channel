@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Five Arrested Near RAF Fairford Base Over Suspected Explosives Plot as Counter-Terror Police Probe Foreign Links",
+    slug: "five-arrested-near-raf-fairford-suspected-explosives-plot-2026",
+    source: "BBC World Service",
+  },
+  {
     title: "Nepal Tunnel Workers Rescued Alive After Nine Days in Flooded Hydropower Plant",
     slug: "nepal-tunnel-workers-rescued-alive-after-nine-days-in-flooded-hydropower-2026",
     source: "BBC Asia News",
