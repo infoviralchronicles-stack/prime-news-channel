@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Tens of Thousands Protest Across Madrid and Barcelona Demanding Emergency Rent Freezes Amid Housing Emergency",
+    slug: "tens-of-thousands-protest-across-madrid-and-barcelona-demanding-rent-freezes-2026",
+    source: "BBC European News",
+  },
+  {
     title: "WHO Convenes Emergency Panel as Resistant Mpox Clade Strains Expand Across Central Africa",
     slug: "who-convenes-emergency-panel-as-resistant-mpox-clade-strains-expand-2026",
     source: "BBC Health News",
