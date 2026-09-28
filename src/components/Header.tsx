@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Crude Oil Surges Above $92 as Strait of Hormuz Naval Standoff Chokes Middle East Tanker Routes",
+    slug: "crude-oil-surges-above-92-as-strait-of-hormuz-naval-standoff-chokes-tankers-2026",
+    source: "BBC Business News",
+  },
+  {
     title: "EU Antitrust Regulators Launch Formal Probe into US Frontier AI Cloud Computing Bundles",
     slug: "eu-antitrust-regulators-launch-formal-probe-into-us-ai-cloud-bundles-2026",
     source: "BBC Technology News",
