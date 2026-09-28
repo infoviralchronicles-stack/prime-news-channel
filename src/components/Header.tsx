@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "WHO Convenes Emergency Panel as Resistant Mpox Clade Strains Expand Across Central Africa",
+    slug: "who-convenes-emergency-panel-as-resistant-mpox-clade-strains-expand-2026",
+    source: "BBC Health News",
+  },
+  {
     title: "Crude Oil Surges Above $92 as Strait of Hormuz Naval Standoff Chokes Middle East Tanker Routes",
     slug: "crude-oil-surges-above-92-as-strait-of-hormuz-naval-standoff-chokes-tankers-2026",
     source: "BBC Business News",
