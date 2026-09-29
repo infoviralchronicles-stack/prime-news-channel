@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "RAF Fairford Suspects Released on Strict Counter-Terror Bail as Special Branch Probes Foreign Drone Telemetry",
+    slug: "raf-fairford-suspects-released-on-strict-counter-terror-bail-2026",
+    source: "BBC World Service",
+  },
+  {
     title: "OpenAI Delays 'GPT-6.1 Astra' Rollout Over Internal Red-Team Safety Warnings as Regulatory Pressure Mounts",
     slug: "openai-delays-gpt-6-1-astra-rollout-over-safety-warnings-2026",
     source: "BBC Technology News",
