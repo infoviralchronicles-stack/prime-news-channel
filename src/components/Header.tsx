@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "Global Health Summit Pledges Emergency Logistics Support to Combat Pediatric Mpox Surge in Central Africa",
+    slug: "global-health-summit-pledges-emergency-logistics-pediatric-mpox-surge-2026",
+    source: "BBC Health News",
+  },
+  {
     title: "UN Convenes Crisis Session as Escalating Clashes and Drought Displace Thousands Across the Horn of Africa",
     slug: "un-convenes-crisis-session-escalating-clashes-drought-horn-of-africa-2026",
     source: "BBC World Service",
