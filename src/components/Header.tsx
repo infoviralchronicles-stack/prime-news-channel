@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "OpenAI Delays 'GPT-6.1 Astra' Rollout Over Internal Red-Team Safety Warnings as Regulatory Pressure Mounts",
+    slug: "openai-delays-gpt-6-1-astra-rollout-over-safety-warnings-2026",
+    source: "BBC Technology News",
+  },
+  {
     title: "Tens of Thousands Protest Across Madrid and Barcelona Demanding Emergency Rent Freezes Amid Housing Emergency",
     slug: "tens-of-thousands-protest-across-madrid-and-barcelona-demanding-rent-freezes-2026",
     source: "BBC European News",
