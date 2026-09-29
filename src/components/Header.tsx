@@ -7,6 +7,11 @@ import { RefreshCw, Search, ShieldCheck, Menu } from 'lucide-react';
 // Default headlines available immediately at render so the ticker is instant without delay
 const INITIAL_BREAKING = [
   {
+    title: "UN Convenes Crisis Session as Escalating Clashes and Drought Displace Thousands Across the Horn of Africa",
+    slug: "un-convenes-crisis-session-escalating-clashes-drought-horn-of-africa-2026",
+    source: "BBC World Service",
+  },
+  {
     title: "UK Government Unveils £40bn National Grid Modernization Initiative to Avert Winter Power Bottlenecks",
     slug: "uk-government-unveils-40bn-national-grid-modernization-initiative-2026",
     source: "BBC Business News",
