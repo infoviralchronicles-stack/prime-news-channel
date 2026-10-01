@@ -17,7 +17,48 @@ import { getAuthorSlug, getAuthorProfile } from '@/lib/authors';
 function renderFormattedContent(rawContent: string) {
   if (!rawContent) return null;
 
-  const blocks = rawContent.split(/\n\n+/);
+  // Split lines into structured blocks separating headings, lists, quotes, and paragraphs
+  const rawLines = rawContent.split('\n');
+  const blocks: string[] = [];
+  let currentGroup: string[] = [];
+
+  const flushGroup = () => {
+    if (currentGroup.length > 0) {
+      blocks.push(currentGroup.join('\n'));
+      currentGroup = [];
+    }
+  };
+
+  const isListItem = (line: string) => /^(\*|\-|\d+\.)\s+(\*\*)?/.test(line.trim());
+  const isHeading = (line: string) => /^#{1,4}\s+|^<h[1-4][^>]*>/i.test(line.trim());
+  const isQuote = (line: string) => line.trim().startsWith('> ');
+
+  for (const line of rawLines) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      flushGroup();
+      continue;
+    }
+
+    if (isHeading(trimmed)) {
+      flushGroup();
+      blocks.push(trimmed);
+    } else if (isQuote(trimmed)) {
+      flushGroup();
+      blocks.push(trimmed);
+    } else if (isListItem(trimmed)) {
+      if (currentGroup.length > 0 && !isListItem(currentGroup[0])) {
+        flushGroup();
+      }
+      currentGroup.push(line);
+    } else {
+      if (currentGroup.length > 0 && isListItem(currentGroup[0])) {
+        flushGroup();
+      }
+      currentGroup.push(line);
+    }
+  }
+  flushGroup();
 
   return blocks.map((block, index) => {
     const trimmed = block.trim();
@@ -101,7 +142,7 @@ function renderFormattedContent(rawContent: string) {
     }
 
     // Numbered list item
-    if (/^\d+\.\s+\*\*/.test(trimmed)) {
+    if (/^\d+\.\s+/.test(trimmed)) {
       const lines = trimmed.split('\n');
       return (
         <div key={index} className="space-y-3 pl-2 sm:pl-4 my-6">
@@ -119,16 +160,22 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // Bullet list item
-    if (trimmed.startsWith('- ')) {
+    // Bullet list item (* or -)
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
       const items = trimmed.split('\n');
       return (
         <ul key={index} className="my-6 space-y-2.5 list-disc list-inside pl-2 font-serif-body text-base sm:text-lg text-neutral-800">
-          {items.map((item, iIdx) => (
-            <li key={iIdx} className="leading-relaxed">
-              {item.replace(/^-+\s*/, '')}
-            </li>
-          ))}
+          {items.map((item, iIdx) => {
+            const cleanItem = item.replace(/^[\*\-]\s*/, '');
+            const parsedItem = cleanItem.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
+            return (
+              <li
+                key={iIdx}
+                className="leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: parsedItem }}
+              />
+            );
+          })}
         </ul>
       );
     }
