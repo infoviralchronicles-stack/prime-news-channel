@@ -25,7 +25,7 @@ export default function HomePage({
   const loadNews = async () => {
     setLoading(true);
     try {
-      let url = `/api/news?limit=40`;
+      let url = `/api/news?limit=40&t=${Date.now()}`;
       if (currentCategory && currentCategory !== 'All') {
         url += `&category=${encodeURIComponent(currentCategory)}`;
       }
@@ -33,7 +33,7 @@ export default function HomePage({
         url += `&q=${encodeURIComponent(query)}`;
       }
 
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: 'no-store' });
       const data = await res.json();
       setArticles(data.articles || []);
     } catch (e) {

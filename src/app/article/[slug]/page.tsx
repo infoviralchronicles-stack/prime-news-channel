@@ -230,7 +230,7 @@ export default function ArticlePage({
   const loadArticle = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/news/${slug}`);
+      const res = await fetch(`/api/news/${slug}?t=${Date.now()}`, { cache: 'no-store' });
       if (res.ok) {
         const data = await res.json();
         setArticle(data.article);
