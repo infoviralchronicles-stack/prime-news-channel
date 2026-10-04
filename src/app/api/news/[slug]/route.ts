@@ -18,5 +18,15 @@ export async function GET(request: Request, context: { params: Promise<{ slug: s
     .filter(a => a.category === article.category && a.id !== article.id)
     .slice(0, 4);
 
-  return NextResponse.json({ article, related });
+  return NextResponse.json(
+    { article, related },
+    {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    }
+  );
 }
+
