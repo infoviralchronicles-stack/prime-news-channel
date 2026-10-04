@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getStoreData } from '@/lib/newsEngine';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+
 export async function GET(request: Request, context: { params: Promise<{ slug: string }> }) {
   const { slug } = await context.params;
   const store = getStoreData();
