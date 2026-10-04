@@ -391,7 +391,19 @@ export default function ArticlePage({
           </span>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
+          {article.url && (
+            <a
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1 font-bold text-xs bg-neutral-900 text-white px-2.5 py-1 rounded hover:bg-black transition"
+              title="View Original Source Article"
+            >
+              <span>Source Link</span>
+              <ExternalLink className="w-3 h-3 ml-0.5" />
+            </a>
+          )}
           <button
             onClick={handleShare}
             className="flex items-center space-x-1.5 font-bold text-neutral-800 hover:text-[#0056b3] cursor-pointer transition"
@@ -402,6 +414,7 @@ export default function ArticlePage({
           </button>
         </div>
       </div>
+
 
       {/* Editorial Featured Media */}
       {article.imageUrl && (
