@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c5ev3ypmzly8o",
+      "title": "Nobel Prize in Medicine Awarded for Optogenetics Breakthrough Mapping Brain Circuits",
+      "slug": "nobel-prize-in-medicine-awarded-for-optogenetics-breakthrough-mapping-brain-circuits",
+      "category": "Health",
+      "author": "Dr. Rachel Bennett",
+      "publishedAt": "2026-10-06T10:00:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c5ev3ypmzly8o",
+      "imageUrl": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Scientists Karl Deisseroth, Peter Hegemann, and Georg Nagel have won the Nobel Prize in Physiology or Medicine for inventing optogenetics, a technology that uses light to control individual brain cells.",
+      "content": "The 2026 Nobel Prize in Physiology or Medicine has been awarded jointly to American psychiatrist Karl Deisseroth and German biophysicists Peter Hegemann and Georg Nagel for their ground-breaking development of optogenetics—a transformative technology that enables scientists to control the activity of targeted brain cells using flashes of light.\n\nBy combining genetic engineering with optics, optogenetics has revolutionized neuroscience, allowing researchers to turn specific neural circuits on or off with millisecond precision and deciphering the complex biological wiring underlying emotion, memory, movement, and mental illness.\n\n## The Mechanics of Optogenetics\n\nThe technology relies on light-sensitive proteins called channelrhodopsins, originally discovered in single-celled green algae by Hegemann and Nagel. Deisseroth subsequently pioneered methods to insert these light-activated ion channels into specific mammalian neurons.\n\n- **Precision Targeting:** Fiber-optic cables deliver targeted light pulses deep into brain tissue, activating or silencing specific neuron subpopulations.\n- **Therapeutic Applications:** Optogenetics has uncovered underlying mechanisms in Parkinson's disease, depression, addiction, chronic pain, and epilepsy.\n- **Preclinical Innovations:** The methodology has accelerated drug discovery by allowing researchers to evaluate therapeutic compounds on precisely mapped neural circuits.\n\n## Nobel Committee Citation\n\nThe Assembly at the Karolinska Institutet praised the laureates for providing neuroscientists with an unprecedented tool to bridge the gap between microscopic cellular activity and macroscopic behavior.\n\n> \"Optogenetics transformed neuroscience from an observational science into an interactive, causal discipline,\" declared the Nobel Assembly. \"Their discoveries have illuminated the darkest corners of brain function.\"\n\n## Global Impact & Future Neurological Therapies\n\nSpeaking following the announcement, Dr. Deisseroth emphasized that optogenetics research is now paving the way for clinical gene therapy trials aimed at restoring vision in blind patients and developing targeted deep brain stimulation protocols.\n\nThe award celebrates decades of interdisciplinary collaboration between biophysics, molecular biology, and clinical psychiatry, highlighting how basic biological research yields extraordinary medical breakthroughs."
+    },
+    {
       "id": "cq203mymlvkeo",
       "title": "Pioneer of Antarctic 'Ghost Particle' Telescope Awarded 2026 Nobel Prize in Physics",
       "slug": "pioneer-of-antarctic-ghost-particle-telescope-awarded-2026-nobel-prize-in-physics",
