@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c5j9x9pr0240o",
+      "title": "Pentagon Halts Use of Anthropic AI Tools After Designating Company a Supply Chain Risk",
+      "slug": "pentagon-halts-use-of-anthropic-ai-tools-after-designating-company-a-supply-chain-risk",
+      "category": "Technology",
+      "author": "Elena Rostova",
+      "publishedAt": "2026-10-06T09:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c5j9x9pr0240o",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+      "summary": "The US Department of Defense has terminated all operational deployments of Anthropic AI models after formally blacklisting the company over its refusal to bypass safety guardrails for defense applications.",
+      "content": "The United States Department of Defense has severed operational contracts and instructed defense command units to halt all deployments of artificial intelligence models developed by Anthropic. The directive comes after military acquisition authorities designated the San Francisco-based AI research lab a 'supply chain risk' following a standoff regarding model safety protocols.\n\nThe rift centers on Anthropic's insistence on maintaining mandatory safety guardrails that prevent its proprietary Claude model series from being deployed for autonomous kinetic weapons targeting or surveillance integration without human intervention.\n\n## Background to the Disagreement\n\nPentagon officials had sought customized API access permitting unconstrained integration into defense intelligence analysis and autonomous simulation frameworks.\n\n- **Safety Guardrail Requirements:** Anthropic leadership refused requests to disable core alignment filters, citing corporate constitutional AI guidelines and risk mitigation frameworks.\n- **Supply Chain Designation:** Following the impasse, defense acquisition directors issued a formal advisory classifying Anthropic tools as a restricted supply chain asset across military branches.\n- **Contract Transition:** Defense agencies have commenced migrating internal research workloads to alternative defense contractor AI platforms.\n\n## Corporate Principles vs National Security Priorities\n\nThe confrontation highlights a growing friction between Silicon Valley AI developers and military oversight bodies as defense departments race to integrate generative models into operational command architectures.\n\n> \"Frontier AI developers face an unprecedented dilemma balancing ethical alignment commitments against sovereign defense mandates,\" observed a senior defense technology fellow in Washington. \"This precedent will shape commercial government contracting for years to come.\"\n\n## Broader Defense & Tech Implications\n\nIndustry observers note that while traditional defense prime contractors are eager to fill the void, frontier labs maintaining strict public safety commitments may face increasing regulatory headwinds in government procurement.\n\nCongressional technology committees have announced plans to hold hearings next month examining procurement standards for dual-use artificial intelligence systems in national defense networks."
+    },
+    {
       "id": "c5pve834grpno",
       "title": "Analysis: How India's Manufacturing Sector Remains Deeply Reliant on Chinese Industrial Imports",
       "slug": "analysis-how-indias-manufacturing-sector-remains-deeply-reliant-on-chinese-industrial-imports",
