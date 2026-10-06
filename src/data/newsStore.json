@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cq8jzyey8e2ro",
+      "title": "Ofcom Opens Investigation into Meta Over Instagram Instants Feature Child Safety Concerns",
+      "slug": "ofcom-opens-investigation-into-meta-over-instagram-instants-feature-child-safety-concerns",
+      "category": "Technology",
+      "author": "Cybersecurity & Policy Desk",
+      "publishedAt": "2026-10-06T09:30:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cq8jzyey8e2ro",
+      "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
+      "summary": "UK communications regulator Ofcom has launched a formal investigation into Meta, evaluating whether Instagram's new 'Instants' messaging feature breaches online safety regulations.",
+      "content": "UK media and communications regulator Ofcom has opened a formal enforcement investigation into Meta Platforms, assessing whether the tech giant failed to carry out mandatory child safety risk assessments before launching its new 'Instants' ephemeral messaging feature on Instagram.\n\nThe probe marks one of the most high-profile enforcement actions conducted under the UK's Online Safety Act framework, which mandates that digital platforms evaluate and mitigate systemic risks to underage users prior to product rollouts.\n\n## Scope of the Regulatory Inquiry\n\nOfcom officials confirmed that the investigation will focus specifically on whether Meta implemented adequate age-verification controls and content safeguards within the Instants environment.\n\n- **Risk Assessment Compliance:** Regulators are examining whether Meta conducted thorough impact assessments regarding grooming and exposure to harmful material.\n- **Feature Design Analysis:** Investigators are analyzing whether auto-deleting messaging mechanisms complicate parental oversight and law enforcement reporting.\n- **Potential Statutory Penalties:** If found non-compliant, Meta could face financial penalties of up to 10% of global annual turnover or restrictions on feature availability in the UK.\n\n## Meta's Official Response\n\nA spokesperson for Meta stated that the company cooperated fully with regulatory enquiries and asserted that robust safety tools were integrated into the Instants architecture prior to launch.\n\n> \"We built Instagram Instants with privacy and safety at its core, incorporating default privacy settings for teenage accounts,\" stated Meta. \"We look forward to demonstrating our compliance with Ofcom standards throughout this review.\"\n\n## Broader Regulatory Atmosphere across Europe\n\nChild safety advocates and European privacy commissioners have welcomed the investigation, urging regulatory authorities across EU member states to harmonize enforcement actions against unvetted social media features.\n\nOfcom is expected to issue preliminary findings and a formal compliance notice within six months as technical audits proceed."
+    },
+    {
       "id": "c5j9x9pr0240o",
       "title": "Pentagon Halts Use of Anthropic AI Tools After Designating Company a Supply Chain Risk",
       "slug": "pentagon-halts-use-of-anthropic-ai-tools-after-designating-company-a-supply-chain-risk",
