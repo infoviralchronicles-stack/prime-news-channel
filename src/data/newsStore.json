@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cq203mymlvkeo",
+      "title": "Pioneer of Antarctic 'Ghost Particle' Telescope Awarded 2026 Nobel Prize in Physics",
+      "slug": "pioneer-of-antarctic-ghost-particle-telescope-awarded-2026-nobel-prize-in-physics",
+      "category": "Science",
+      "author": "Julian Sterling",
+      "publishedAt": "2026-10-06T09:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cq203mymlvkeo",
+      "imageUrl": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Belgian astrophysicist Professor Francis Halzen has been awarded the 2026 Nobel Prize in Physics for his visionary leadership in constructing the IceCube Neutrino Observatory at the South Pole.",
+      "content": "The Royal Swedish Academy of Sciences has awarded the 2026 Nobel Prize in Physics to Belgian astrophysicist Professor Francis Halzen for his pioneering role in designing and constructing the IceCube Neutrino Observatory, a massive detector embedded deep within the Antarctic ice sheet to capture elusive cosmic 'ghost particles.'\n\nNeutrinos—nearly massless subatomic particles that travel across the universe virtually unimpeded by matter or magnetic fields—carry fundamental information regarding supermassive black holes, gamma-ray bursts, and violent cosmic events.\n\n## The IceCube Engineering Marvel\n\nConstructed at the Amundsen-Scott South Pole Station, IceCube instrumented a cubic kilometer of pristine polar ice with thousands of optical sensors suspended down boreholes drilled over a mile deep into the glacier.\n\n- **Detection Principle:** When high-energy neutrinos collide with ice molecules, they produce charged secondary particles emitting faint blue Cherenkov radiation detected by optical sensors.\n- **Cosmic Mapping:** Halzen's team successfully mapped high-energy neutrino sources back to distant active galactic nuclei (blazars) billions of light-years away.\n- **Multimessenger Astronomy:** The breakthrough established neutrino astrophysics as an essential pillar of modern observational astronomy alongside optical and gravitational-wave astronomy.\n\n## Announcement & Scientific Consensus\n\nIn its citation, the Nobel Committee commended Professor Halzen for transforming an ambitious theoretical concept into a world-class observational facility that opened a new window onto the extreme universe.\n\n> \"Detecting particles that interact so weakly with matter required building a detector of extraordinary scale in the harshest environment on Earth,\" stated the Nobel Physics Panel. \"Professor Halzen's determination revolutionized multi-messenger astronomy.\"\n\n## Future Horizons in Astroparticle Physics\n\nReaching Professor Halzen at his research lab in Madison, Wisconsin, the laureate expressed gratitude to the international collaboration of engineers, polar drillers, and researchers who made the facility operational.\n\nIceCube is currently undergoing a multi-phase upgrade to expand its detection volume, promising even deeper insights into cosmic ray acceleration and fundamental physics over the coming decades."
+    },
+    {
       "id": "cq8jzyey8e2ro",
       "title": "Ofcom Opens Investigation into Meta Over Instagram Instants Feature Child Safety Concerns",
       "slug": "ofcom-opens-investigation-into-meta-over-instagram-instants-feature-child-safety-concerns",
