@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cvj6jkx6g1r0o",
+      "title": "Finland Environmental Regulator Orders Halt to Work on Two Major Google Data Centres",
+      "slug": "finland-environmental-regulator-orders-halt-to-work-on-two-major-google-data-centres",
+      "category": "Technology",
+      "author": "Elena Rostova",
+      "publishedAt": "2026-10-07T09:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cvj6jkx6g1r0o",
+      "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Finnish environmental protection authorities have issued a binding injunction ordering Google to halt construction on two planned hyperscale data centre hubs over forest clearing and power grid impact concerns.",
+      "content": "Finnish environmental protection authorities have issued a binding administrative order requiring tech giant Google to suspend initial site clearing and construction work on two planned hyperscale data centre facilities in Southern Finland.\n\nThe regulatory intervention follows environmental impact appeals filed by municipal conservation groups and regional forestry boards questioning the scale of boreal forest clearance and local electrical grid capacity.\n\n## Environmental & Power Grid Constraints\n\nThe expansion projects were designed to add gigawatt-scale computing capacity to Google's Nordic server network, supporting regional AI model inference and cloud infrastructure.\n\n- **Forestry Habitat Impact:** Local environmental boards raised objections over the unmitigated clearing of mature boreal woodland habitats adjacent to protected conservation zones.\n- **Electrical Grid Overload:** Energy regulators noted that simultaneous multi-facility grid connections threatened local industrial transmission stability during peak winter months.\n- **Water Usage Audits:** Public hearings identified concerns regarding cooling water withdrawal permissions from nearby freshwater lakes.\n\n## Google's Corporate Reaction\n\nIn an official statement, Google expressed disappointment with the regulatory suspension, asserting that its Nordic facilities operate under strict sustainability guidelines and utilize green power agreements.\n\n> \"Our planned infrastructure investments in Finland are engineered to meet strict environmental and energy-efficiency standards,\" stated a Google infrastructure communications director. \"We are committed to working closely with Finnish authorities to address ecological concerns and resume construction.\"\n\n## European Data Centre Permitting Landscape\n\nThe construction freeze reflects growing friction across Northern and Western Europe as tech conglomerates scramble to secure grid connections and land approvals for energy-intensive artificial intelligence data hubs.\n\nEuropean Union environmental directives are increasingly subjecting hyperscale compute developments to stringent ecological impact audits before ground-breaking permits are granted."
+    },
+    {
       "id": "ck9qrq1d19w4o",
       "title": "Reinventing the Mall: How Shopping Centres Are Transforming to Survive the E-Commerce Shift",
       "slug": "reinventing-the-mall-how-shopping-centres-are-transforming-to-survive-the-e-commerce-shift",
