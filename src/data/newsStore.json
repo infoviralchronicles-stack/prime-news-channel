@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "crvg904yw397o",
+      "title": "WHO Issues Global Guidelines Warning Against Prescribing Obesity Injections to Children Under 10",
+      "slug": "who-issues-global-guidelines-warning-against-prescribing-obesity-injections-to-children-under-10",
+      "category": "Health",
+      "author": "Dr. Rachel Bennett",
+      "publishedAt": "2026-10-08T10:00:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/crvg904yw397o",
+      "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80",
+      "summary": "The World Health Organization has published landmark clinical guidelines advising against the prescription of GLP-1 weight-loss injections for young children, emphasizing lifestyle interventions.",
+      "content": "The World Health Organization (WHO) has issued comprehensive global clinical guidelines governing the management of pediatric obesity, explicitly warning healthcare providers against prescribing GLP-1 receptor agonist weight-loss injections to children under 10 years of age.\n\nThe guidance comes amidst growing international concern over off-label prescriptions of adult anti-obesity pharmaceuticals to young children, urging medical authorities to prioritize structured nutritional, physical, and psychological interventions instead.\n\n## Clinical Rationale & Long-Term Safety Concerns\n\nWHO medical panels reviewed extensive clinical trial data, establishing that long-term physiological outcomes and endocrine impacts of GLP-1 agonist medications in young children remain unproven.\n\n- **Bone Density & Growth Impacts:** Researchers highlighted concerns regarding potential interference with normal bone mineral density accumulation and pubertal development.\n- **Nutritional Deficits:** High-potency appetite suppression in developing children risks causing essential micronutrient deficiencies during critical growth phases.\n- **Focus on Environmental Factors:** The panel emphasized that childhood obesity must be addressed by reforming school food environments and urban recreational access rather than pharmacological fixes.\n\n## Exceptions for Adolescents Under Medical Supervision\n\nFor adolescents aged 12 and older with severe obesity-related comorbidities, the WHO guidelines permit selective pharmaceutical use, provided treatment is combined with comprehensive behavioral therapy and specialized medical monitoring.\n\n> \"Medications cannot replace the foundational necessity of nutritious food environments and physical activity for growing children,\" explained a WHO pediatric health director. \"Potent pharmacological interventions should not be viewed as a default solution for early childhood weight management.\"\n\n## Implementation Across National Health Systems\n\nPublic health agencies in the UK, Europe, and North America confirmed they will integrate the WHO recommendations into national clinical guidelines for general practitioners and pediatric endocrinologists.\n\nMedical associations have welcomed the clear boundaries, calling for increased public investment in community pediatric nutrition programs."
+    },
+    {
       "id": "cx5yn46j41zpo",
       "title": "Margaret Hamilton, Pioneering Computer Scientist Who Led Apollo 11 Software Development, Dies at 90",
       "slug": "margaret-hamilton-pioneering-computer-scientist-who-led-apollo-11-software-development-dies-at-90",
