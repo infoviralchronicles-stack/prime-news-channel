@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cx5yn46j41zpo",
+      "title": "Margaret Hamilton, Pioneering Computer Scientist Who Led Apollo 11 Software Development, Dies at 90",
+      "slug": "margaret-hamilton-pioneering-computer-scientist-who-led-apollo-11-software-development-dies-at-90",
+      "category": "World",
+      "author": "Julian Sterling",
+      "publishedAt": "2026-10-08T09:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cx5yn46j41zpo",
+      "imageUrl": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Pioneering mathematician and computer scientist Margaret Hamilton, who led the software engineering team for NASA's Apollo space program, has passed away at the age of 90.",
+      "content": "Margaret Hamilton, the visionary computer scientist and mathematician who directed the Software Engineering Division at the MIT Instrumentation Laboratory for NASA's Apollo space program, has died at the age of 90.\n\nHamilton, who famously coined the term 'software engineering' to establish computer coding as a rigorous academic and professional discipline, was instrumental in ensuring the safety of the historic Apollo 11 Moon landing in 1969.\n\n## The Apollo 11 Computer Flight Code\n\nDuring the critical minutes preceding Apollo 11's lunar descent, the onboard flight computer became overloaded with radar data. Hamilton's revolutionary asynchronous executive architecture prioritized essential landing operations, preventing an aborted mission.\n\n- **Priority Display Architecture:** Hamilton's software automatically shed low-priority radar tasks to dedicate processing power to thruster controls and navigation displays.\n- **Asynchronous Execution:** Her design introduced concepts of software error detection, real-time recovery, and fault-tolerant architecture to systems engineering.\n- **Pioneering Female Leader:** At a time when female engineers were rare in aerospace engineering, Hamilton managed a team of over 100 developers creating flight software from scratch.\n\n## Presidential Recognition & Global Legacy\n\nIn 2016, President Barack Obama awarded Hamilton the Presidential Medal of Freedom, the nation's highest civilian honor, recognizing her foundational contributions to modern computing.\n\n> \"Margaret Hamilton represents the true pioneer spirit of computer science,\" declared NASA Administrator in a memorial tribute. \"Her flight software landed humanity on the Moon and established the software engineering standards that power modern aviation and space exploration today.\"\n\n## Tributes Across the Tech Industry\n\nTributes from computer scientists, university faculties, and aerospace organizations poured in worldwide, celebrating Hamilton's legacy as a mentor and trail-blazing engineer.\n\nHer iconic photograph—standing alongside stacks of hand-printed Apollo flight code taller than herself—remains one of the most celebrated symbols of technological innovation in human history."
+    },
+    {
       "id": "cwz0vrmxkvy4o",
       "title": "Research Warns Teen Use of ChatGPT Poses 'Unacceptable Risks' as Safety Guardrails Fail Audit",
       "slug": "research-warns-teen-use-of-chatgpt-poses-unacceptable-risks-as-safety-guardrails-fail-audit",
