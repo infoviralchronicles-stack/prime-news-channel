@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c687z8127302o",
+      "title": "Global Demand for AI Memory Chips Drives Samsung to Record $80 Billion Operating Profit",
+      "slug": "global-demand-for-ai-memory-chips-drives-samsung-to-record-80-billion-operating-profit",
+      "category": "Technology",
+      "author": "Elena Rostova",
+      "publishedAt": "2026-10-08T09:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c687z8127302o",
+      "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "summary": "High-bandwidth memory (HBM) chip orders from AI server manufacturers have pushed semiconductor giant Samsung to record annual operating profits exceeding $80 billion.",
+      "content": "South Korean technology conglomerate Samsung Electronics has posted record annual operating profits exceeding $80 billion, driven by an unprecedented surge in demand for high-bandwidth memory (HBM) chips required to power next-generation artificial intelligence data centers.\n\nThe earnings disclosure underscores how the global expansion of generative AI models and hyperscale compute clusters has transformed semiconductor supply chains, elevating memory chip manufacturers to central positions in the global technology economy.\n\n## HBM3E Production & Market Share Expansion\n\nSamsung's semiconductor division reported near-capacity utilization across its advanced DRAM fabrication lines, supplying multi-layer HBM3E stacks to leading AI accelerator developers.\n\n- **High-Bandwidth Memory Demand:** Orders for high-density 12-layer HBM stacks expanded by over 300% year-on-year, driven by server cluster deployments.\n- **Foundry Yield Optimization:** Advanced 3-nanometer gate-all-around (GAA) fabrication yields improved significantly, attracting international fabless design partners.\n- **Consumer Electronics Recovery:** Premium folding mobile devices and AI-integrated consumer hardware provided secondary revenue growth across global retail markets.\n\n## Financial Performance & Market Reaction\n\nShares in Samsung surged on the Seoul Stock Exchange following the preliminary earnings guidance, with equity analysts revising full-year price targets upward across major brokerage firms.\n\n> \"The structural realignment toward AI compute infrastructure has created sustained multi-year pricing power for memory manufacturers,\" explained a senior semiconductor analyst in Singapore. \"High-bandwidth memory is no longer a cyclical commodity; it is critical digital infrastructure.\"\n\n## Capital Investment & Future Fab Expansions\n\nTo meet backlogged enterprise orders, Samsung executive leadership confirmed plans to allocate additional capital expenditure toward expanding advanced packaging facilities in South Korea and North America.\n\nIndustry observers note that while memory market dynamics remain favorable, geopolitical export controls and supply chain localization requirements continue to shape long-term fabrication site selection."
+    },
+    {
       "id": "cxm234pzj952o",
       "title": "Infrared Patient Monitoring Controls Spark Regulatory Investigation Across Ten NHS Trusts",
       "slug": "infrared-patient-monitoring-controls-spark-regulatory-investigation-across-ten-nhs-trusts",
