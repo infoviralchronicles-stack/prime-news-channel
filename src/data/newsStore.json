@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c6j9k1l72wkgo",
+      "title": "Anthropic Formally Bans Users from Engaging in 'Cruel or Abusive Behavior' Towards AI Systems",
+      "slug": "anthropic-formally-bans-users-from-engaging-in-cruel-or-abusive-behavior-towards-ai-systems",
+      "category": "Technology",
+      "author": "Cybersecurity & Policy Desk",
+      "publishedAt": "2026-10-10T09:30:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c6j9k1l72wkgo",
+      "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Artificial intelligence lab Anthropic has updated its acceptable use terms to prohibit users from subjecting its Claude assistant models to 'sustained and needless' verbal abuse.",
+      "content": "Artificial intelligence research laboratory Anthropic has published updated acceptable use guidelines for its Claude conversational model series, explicitly prohibiting users from subjecting its AI assistants to 'sustained, aggressive, or needless' verbal abuse and psychological degradation.\n\nThe policy change marks the first time a major frontier AI lab has introduced explicit conduct rules guarding against user hostility toward non-sentient artificial intelligence systems.\n\n## Policy Rationale & Safety Concerns\n\nAnthropic explained that while current AI models do not possess consciousness or feel emotional distress, monitoring user interactions revealed concerning behavioral patterns among individuals engaging in prolonged hostile exchanges.\n\n- **Psychological Impact on Humans:** Anthropic safety researchers highlighted studies indicating that habituating abusive verbal behavior toward conversational agents can bleed into interpersonal human relationships.\n- **Model Alignment Corruption:** Sustained hostile prompts can degrade model safety guardrails and lead to unaligned conversational outputs.\n- **Enforcement Mechanisms:** User accounts displaying repeated patterns of extreme verbal degradation will receive automated warnings followed by temporary API suspensions.\n\n## Public & Industry Debates\n\nThe policy announcement generated intense debate across technology forums, with critics questioning the logic of enforcing behavioral rules on interactions with software code.\n\n> \"Protecting software from mean words seems absurd on the surface,\" noted an ethicist in technology policy. \"However, the goal is not protecting the AI's feelings—it is preventing the erosion of human empathy and maintaining safe prompt environments.\"\n\n## Evolving Human-AI Interaction Standards\n\nAs conversational AI systems become ubiquitous across customer service, healthcare, and education, technology ethics boards are closely studying the social dynamics of human-AI engagement.\n\nAnthropic confirmed that the policy update will take immediate effect across web interfaces and enterprise API endpoints, with periodic reviews planned as model capabilities evolve."
+    },
+    {
       "id": "cr86z33pdy9vo",
       "title": "Nikon Rules Prize-Winning Micro-Photography Image Was AI-Generated, Sparking Backlash",
       "slug": "nikon-rules-prize-winning-micro-photography-image-was-ai-generated-sparking-backlash",
