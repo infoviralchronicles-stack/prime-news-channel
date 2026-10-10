@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "crkg7n1ypj24o",
+      "title": "Government Review Warns Society Faces Risk of Over-Diagnosing ADHD and Autism in Young People",
+      "slug": "government-review-warns-society-faces-risk-of-over-diagnosing-adhd-and-autism-in-young-people",
+      "category": "Health",
+      "author": "Dr. Rachel Bennett",
+      "publishedAt": "2026-10-10T10:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/crkg7n1ypj24o",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+      "summary": "An independent healthcare review commissioned by the government warns that neurodevelopmental assessment criteria require standardization to prevent misdiagnosis among adolescents.",
+      "content": "An independent clinical review commissioned by health authorities has concluded that while past decades suffered from significant under-recognition of neurodevelopmental conditions, society now faces a growing risk of over-diagnosing Attention Deficit Hyperactivity Disorder (ADHD) and Autism Spectrum Disorder (ASD) among children and young adults.\n\nThe report, led by senior child psychiatrists and clinical psychologists, highlights severe regional disparities in diagnostic rates and warns that diagnostic inflation threatens to overwhelm NHS mental health services.\n\n## Core Findings of the Clinical Review\n\nThe review panel analyzed diagnostic data across hundreds of NHS trusts and private assessment clinics, identifying key systemic pressures driving diagnostic inflation.\n\n- **Social Media Influence:** Proliferation of unvetted mental health content on social media platforms has led adolescents to self-diagnose complex neurodevelopmental conditions based on generic traits.\n- **Private Clinic Variability:** Inconsistent assessment rigor between private private fee-charging clinics and NHS diagnostic standards contributed to high diagnostic variance.\n- **School Resource Strain:** Educational institutions increasingly require formal diagnostic labels before allocating basic classroom learning support to struggling students.\n\n## Recommendations for Diagnostic Standardization\n\nThe review panel called for establishing centralized national assessment protocols, multi-disciplinary evaluation teams, and enhanced clinical training for general practitioners.\n\n> \"We must move away from a binary diagnostic culture where complex emotional distress is immediately categorized as a lifelong neurodevelopmental disorder,\" explained the lead review chair. \"We need comprehensive assessments that consider social, educational, and environmental factors.\"\n\n## Response from Patient Groups & Clinical Bodies\n\nPatient advocacy organizations welcomed calls for shorter NHS waiting lists but urged caution against stigmatizing individuals who genuinely require clinical support and academic accommodations.\n\nThe Department of Health confirmed it will implement the review's recommendations, introducing updated diagnostic guidelines across NHS trusts over the coming fiscal year."
+    },
+    {
       "id": "c63djxry8124o",
       "title": "Boots High Street Pharmacy Chain Sold to Canadian Private Investment Group in Landmark Acquisition",
       "slug": "boots-high-street-pharmacy-chain-sold-to-canadian-private-investment-group-in-landmark-acquisition",
