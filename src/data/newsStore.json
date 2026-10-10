@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cm1dwgr666wno",
+      "title": "Trump Announces Russian Diesel Procurement Deal as Zelensky Criticizes Move as 'Investment in War'",
+      "slug": "trump-announces-russian-diesel-procurement-deal-as-zelensky-criticizes-move-as-investment-in-war",
+      "category": "World",
+      "author": "Jonathan Vance",
+      "publishedAt": "2026-10-10T09:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cm1dwgr666wno",
+      "imageUrl": "https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=1200&q=80",
+      "summary": "The US administration has announced an unexpected agreement to procure refined Russian diesel fuel to curb domestic retail energy prices, drawing sharp diplomatic criticism from European allies.",
+      "content": "The United States administration has announced a controversial bilateral agreement to import refined Russian diesel fuel, seeking to stabilize domestic commercial fuel prices and mitigate inflationary pressures ahead of upcoming mid-term congressional elections.\n\nThe procurement announcement has triggered severe diplomatic friction across transatlantic alliances, drawing immediate condemnation from Ukrainian President Volodymyr Zelensky and European diplomatic leaders.\n\n## Terms of the Fuel Procurement Agreement\n\nUnder the negotiated terms, specialized third-party trading entities will facilitate shipments of refined middle-distillate fuels from Russian Baltic ports directly to US Eastern seaboard distribution hubs.\n\n- **Price Cap Carve-Outs:** US treasury officials confirmed temporary regulatory waivers modifying existing sanctions frameworks to permit energy transactions.\n- **Domestic Price Suppression:** The administration emphasized that increasing domestic diesel supplies is critical to reducing commercial freight shipping costs and food transport inflation.\n- **Diplomatic Repercussions:** European Union foreign ministers convened an emergency session in Brussels to evaluate the impact of the US sanction exemptions on international coalition unity.\n\n## Zelensky's Diplomatic Rebuke\n\nSpeaking at a press conference in Kyiv, President Zelensky sharply criticized the transaction, characterizing foreign capital transfers for Russian energy as direct funding for military operations.\n\n> \"Purchasing refined energy from the aggressor state represents an investment in war that prolongs conflict rather than ending it,\" declared President Zelensky. \"Sanctions regimes must remain absolute to achieve durable peace.\"\n\n## Congressional Reaction & Political Fallout\n\nMembers of Congress from both major political parties expressed concern over the policy shift, with Senate foreign relations committees requesting immediate classified briefings on energy sanction compliance.\n\nThe White House defended the decision as a temporary pragmatic measure to protect domestic consumers while broader global energy supply stabilization efforts continue."
+    },
+    {
       "id": "c6j9k1l72wkgo",
       "title": "Anthropic Formally Bans Users from Engaging in 'Cruel or Abusive Behavior' Towards AI Systems",
       "slug": "anthropic-formally-bans-users-from-engaging-in-cruel-or-abusive-behavior-towards-ai-systems",
