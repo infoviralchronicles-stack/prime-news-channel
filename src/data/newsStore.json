@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c61m4829wwyo",
+      "title": "Toxicology Studies Warn Over Chemical Leaching in Cans",
+      "slug": "toxicology-studies-warn-over-chemical-leaching-in-cans",
+      "category": "Health",
+      "author": "Dr. Rachel Bennett",
+      "publishedAt": "2026-10-14T10:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c61m4829wwyo",
+      "imageUrl": "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Peer-reviewed toxicological assessments reveal that commercial epoxy and polymer can linings continue to leach endocrine-disrupting chemicals into preserved foods, prompting calls for strict regulatory reform.",
+      "content": "A comprehensive multi-center toxicological evaluation published by independent food safety researchers has reignited international health concerns over commercial food packaging. The findings indicate that despite regulatory phase-outs of traditional Bisphenol A (BPA), replacement synthetic epoxy resin linings in canned food products continue to leach bioactive endocrine-disrupting compounds into consumer food supplies.\n\nThe study analyzed hundreds of commercial canned products spanning acidic fruits, vegetables, soups, and ready meals purchased across major supermarket chains, measuring chemical migration across extended shelf-life intervals.\n\n## The Chemistry Behind Packaging Migration\n\nTo prevent metallic corrosion and microbial contamination, modern food cans are lined internally with thin chemical polymer films. When traditional BPA was restricted due to proven estrogenic hormonal disruption, packaging manufacturers transitioned to alternative bisphenols, including BPS and BPF, as well as novel acrylic coatings.\n\n- **Structural Analog Toxicity:** Molecular modeling and bioassay testing demonstrated that replacement chemicals exhibit endocrine-disrupting potencies nearly identical to legacy BPA, binding to human hormone receptors.\n- **Acidic Food Acceleration:** High-acidity contents such as canned tomato purees, citrus slices, and pickled foods demonstrated significantly accelerated chemical migration into the edible contents.\n- **Temperature & Storage Duration:** Extended warehouse storage in non-climate-controlled environments substantially increased chemical concentrations detected in consumable liquids.\n\n## Clinical Concerns Over Endocrine Disruption\n\nEndocrinologists and pediatric health specialists have expressed particular alarm regarding cumulative low-dose exposures in vulnerable populations, including pregnant women and young children.\n\n> \"The assumption that substituting one synthetic bisphenol variant for another equates to consumer safety has proven fundamentally flawed,\" explained lead toxicologist Dr. Helena Ward. \"Chronic low-level exposure to endocrine disruptors is clinically associated with metabolic syndrome, reproductive complications, and cardiovascular inflammation.\"\n\n## Demands for Non-Toxic Packaging Standards\n\nIn response to the clinical evidence, consumer advocacy groups and public health bodies are demanding that packaging safety standards transition toward bio-based, resin-free coatings, inert glass packaging, and stricter pre-market migration testing.\n\nRegulatory food safety agencies in both Europe and North America confirmed they have launched formal review inquiries into cumulative bisphenol migration thresholds, with proposed directives seeking to establish zero-tolerance exposure limits for all synthetic polymer linings in direct contact with food."
+    },
+    {
       "id": "c35x719llpro",
       "title": "Astrophysicists Question Whether Dark Energy Truly Exists",
       "slug": "astrophysicists-question-whether-dark-energy-truly-exists",
