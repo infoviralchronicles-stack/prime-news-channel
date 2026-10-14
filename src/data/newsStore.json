@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "c82p194vvgmo",
+      "title": "Global Media Coalition Unites to Enforce AI Copyrights",
+      "slug": "global-media-coalition-unites-to-enforce-ai-copyrights",
+      "category": "Business",
+      "author": "Gareth Davies",
+      "publishedAt": "2026-10-14T09:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/c82p194vvgmo",
+      "imageUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80",
+      "summary": "An unprecedented alliance of international news organizations including the BBC, AFP, and The New York Times has formed to enforce intellectual property rights and mandatory licensing for generative AI training.",
+      "content": "In an unprecedented show of cross-border solidarity, leading international news publishers and broadcast organizations have announced the formal establishment of a global enforcement coalition designed to compel commercial artificial intelligence developers to negotiate transparent licensing frameworks for journalistic content.\n\nThe international coalition—bringing together the BBC, Agence France-Presse (AFP), The New York Times, The Guardian, and The Economist—represents the most coordinated pushback yet against the unauthorized commercial scraping of copyrighted investigative reporting, photographic archives, and editorial analysis.\n\n## The Core Grievances of Global Publishers\n\nFor years, commercial generative models have ingested decades of proprietary journalism to train large language models that subsequently synthesize and summarize current events, often without attribution, referral traffic, or financial compensation to the original creators.\n\n- **Systematic Content Scraping:** Automated crawlers continue to bypass standard webmaster exclusion protocols to harvest live news desks and proprietary paywalled archives.\n- **Search Engine Replacement:** Generative AI answer engines provide synthesized answers directly on search engine results pages, stripping news websites of digital ad impressions and digital subscription revenues.\n- **Attribution Dilution & Misinformation:** Automated summaries frequently hallucinate factual inaccuracies while erroneously citing reputable news mastheads, damaging institutional journalistic credibility.\n\n## Developing Universal Content Tracking Protocols\n\nBeyond legal litigation, the coalition announced the deployment of standardized, cryptographically signed digital provenance watermarks and automated crawler auditing systems.\n\n> \"Quality independent journalism requires extensive capital investment, field reporting, and legal risk,\" explained a spokesperson representing the publisher coalition. \"Silicon Valley cannot build multi-trillion-dollar commercial software platforms on the back of free, uncompensated creative and journalistic labor.\"\n\n## The Push for Legislative Licensing Mandates\n\nThe media alliance is actively lobbying parliamentary bodies in London, Brussels, and Washington to mandate collective bargaining frameworks similar to existing statutory music and broadcast royalty regimes.\n\nUnder the proposed legislative framework, frontier AI operators would be required to obtain statutory collective licenses, ensuring equitable royalty distributions to publishers based on verified token ingestion ratios. Legal analysts predict the coalition's unified stance will force major technology firms to the negotiating table before pending class-action copyright lawsuits reach trial."
+    },
+    {
       "id": "cr93m511kxvo",
       "title": "FBI Arrests OpenAI Engineer Over Bugged Meeting Room",
       "slug": "fbi-arrests-openai-engineer-over-bugged-meeting-room",
