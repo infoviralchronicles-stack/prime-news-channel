@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "ck71y3822ljwo",
+      "title": "300,000 Irish Public Workers Strike in Historic Walkout",
+      "slug": "300000-irish-public-workers-strike-in-historic-walkout",
+      "category": "World",
+      "author": "Elena Rostova",
+      "publishedAt": "2026-10-15T08:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/ck71y3822ljwo",
+      "imageUrl": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Over 300,000 public sector workers across the Republic of Ireland have commenced a coordinated 24-hour national strike, shuttering schools, grounding transport, and canceling routine hospital procedures over a pay dispute.",
+      "content": "The Republic of Ireland has experienced its largest coordinated labor stoppage in over two decades as more than 300,000 public sector employees—including nurses, doctors, primary school educators, civil servants, and public transport operators—commenced a nationwide 24-hour general strike.\n\nThe widespread walkout has effectively halted normal civil life across Dublin, Cork, Galway, and Limerick, causing the postponement of thousands of scheduled outpatient medical appointments, closing hundreds of state schools, and severely disrupting maritime and public rail corridors.\n\n## The Drivers Behind the Nationwide Stoppage\n\nThe industrial dispute follows months of deadlocked negotiations between public sector trade union alliances and government representatives regarding wage adjustments in the face of persistent cost-of-living increases and escalating urban housing costs.\n\n- **Erosion of Real Purchasing Power:** Union representatives contend that multi-year inflation surges have diminished public employee salaries by over twelve percent in real terms over the preceding triennium.\n- **Severe Staffing Deficits:** Acute recruitment and retention shortfalls across the Health Service Executive (HSE) and state education systems have placed unsustainable workloads on frontline professionals.\n- **Housing Affordability Pressures:** Skyrocketing rental costs in major Irish metropolitan centers have rendered living wages inadequate for early-career healthcare and civil service personnel.\n\n## Emergency Contingency Operations\n\nWhile routine services ground to an absolute halt, union leadership and state administrators coordinated minimum emergency staffing frameworks to guarantee essential intensive care, emergency surgical units, and public fire safety operations remained operational throughout the day.\n\n> \"This action is a measure of absolute last resort taken by workers who have watched their livelihoods eroded while public services are pushed to the breaking point,\" declared trade union general secretary Liam O'Connor during a demonstration in front of Dublin's government buildings.\n\n## The Political Stakes for Government Leadership\n\nThe national strike presents a critical political challenge for the ruling coalition ahead of upcoming parliamentary budget deliberations.\n\nMinisters have reiterated that while they recognize the economic pressures confronting public servants, statutory fiscal frameworks must balance wage settlements against broader macroeconomic stability. Talks mediated by the Workplace Relations Commission are scheduled to reconvene immediately following the conclusion of the 24-hour stoppage."
+    },
+    {
       "id": "cn94m2881xpro",
       "title": "Big Tech Pivots to Nuclear Power for AI Data Centers",
       "slug": "big-tech-pivots-to-nuclear-power-for-ai-data-centers",
