@@ -1,23 +1,89 @@
-"use client";
-
-import React, { useEffect, useState, use } from 'react';
+import React from 'react';
+import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
-import { Clock, ArrowLeft, Share2, ExternalLink, ShieldCheck, Tag } from 'lucide-react';
-import { Article } from '@/lib/types';
+import { notFound } from 'next/navigation';
+import { Clock, ArrowLeft, ExternalLink, ShieldCheck } from 'lucide-react';
+import { getStoreData } from '@/lib/newsEngine';
 import { getAuthorSlug, getAuthorProfile } from '@/lib/authors';
+import ShareButton from '@/components/ShareButton';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
 
 /**
- * Parses markdown into beautiful, semantic HTML elements (h2, h3, bold, lists, paragraphs)
- * eliminating raw '###' or '**' artifacts completely.
+ * Server-Side Dynamic Metadata for Google Search, Google News & Discover
  */
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params;
+  const store = getStoreData();
+  const article = store.articles.find(a => a.slug === slug || a.id === slug);
+
+  if (!article) {
+    return {
+      title: 'Article Not Found | Prime News Channel',
+      description: 'The requested news article could not be located.',
+    };
+  }
+
+  const canonicalUrl = `https://primenewschannel.com/article/${article.slug}`;
+
+  return {
+    title: `${article.title} | Prime News Channel`,
+    description: article.summary,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.summary,
+      url: canonicalUrl,
+      siteName: 'Prime News Channel',
+      images: [
+        {
+          url: article.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&auto=format&fit=crop&q=80',
+          width: 1200,
+          height: 800,
+          alt: article.title,
+        },
+      ],
+      type: 'article',
+      publishedTime: article.publishedAt,
+      authors: [article.author || 'Prime News Wire'],
+      section: article.category,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.summary,
+      images: [article.imageUrl || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&auto=format&fit=crop&q=80'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
 /**
  * Semantic HTML renderer supporting H1, H2, H3, H4 headings cleanly
- * without any red dot/square decorations, symbols, or drop caps.
  */
 function renderFormattedContent(rawContent: string) {
   if (!rawContent) return null;
 
-  // Split lines into structured blocks separating headings, lists, quotes, and paragraphs
   const rawLines = rawContent.split('\n');
   const blocks: string[] = [];
   let currentGroup: string[] = [];
@@ -40,10 +106,7 @@ function renderFormattedContent(rawContent: string) {
       continue;
     }
 
-    if (isHeading(trimmed)) {
-      flushGroup();
-      blocks.push(trimmed);
-    } else if (isQuote(trimmed)) {
+    if (isHeading(trimmed) || isQuote(trimmed)) {
       flushGroup();
       blocks.push(trimmed);
     } else if (isListItem(trimmed)) {
@@ -64,7 +127,6 @@ function renderFormattedContent(rawContent: string) {
     const trimmed = block.trim();
     if (!trimmed) return null;
 
-    // Helper to clean heading markdown, html tags & numbers
     const cleanHeadingText = (text: string) => {
       return text
         .replace(/^<h[1-6][^>]*>/i, '')
@@ -75,7 +137,6 @@ function renderFormattedContent(rawContent: string) {
         .trim();
     };
 
-    // H1 Heading (Markdown # or <h1>)
     if (trimmed.startsWith('# ') || /^<h1[^>]*>/i.test(trimmed)) {
       return (
         <h1
@@ -87,7 +148,6 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H2 Heading (Markdown ## or <h2>)
     if (trimmed.startsWith('## ') || /^<h2[^>]*>/i.test(trimmed)) {
       return (
         <h2
@@ -99,7 +159,6 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H3 Heading (Markdown ### or <h3>)
     if (trimmed.startsWith('### ') || /^<h3[^>]*>/i.test(trimmed)) {
       return (
         <h3
@@ -111,7 +170,6 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // H4 Heading (Markdown #### or <h4>)
     if (trimmed.startsWith('#### ') || /^<h4[^>]*>/i.test(trimmed)) {
       return (
         <h4
@@ -123,44 +181,6 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // HTML List <ul> or <ol>
-    if (/^<ul[^>]*>/i.test(trimmed) || /^<ol[^>]*>/i.test(trimmed)) {
-      const listItems = trimmed
-        .replace(/^<[uo]l[^>]*>/i, '')
-        .replace(/<\/[uo]l>$/i, '')
-        .split(/<\/li>/i)
-        .map(item => item.replace(/<li[^>]*>/i, '').trim())
-        .filter(item => item.length > 0);
-
-      return (
-        <ul key={index} className="my-6 space-y-2.5 list-disc list-inside pl-2 font-serif-body text-base sm:text-lg text-neutral-800">
-          {listItems.map((item, iIdx) => (
-            <li key={iIdx} className="leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
-          ))}
-        </ul>
-      );
-    }
-
-    // Numbered list item
-    if (/^\d+\.\s+/.test(trimmed)) {
-      const lines = trimmed.split('\n');
-      return (
-        <div key={index} className="space-y-3 pl-2 sm:pl-4 my-6">
-          {lines.map((line, lIdx) => {
-            const parsedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>');
-            return (
-              <div
-                key={lIdx}
-                className="font-serif-body text-base sm:text-lg leading-[1.85] text-neutral-800"
-                dangerouslySetInnerHTML={{ __html: parsedLine }}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // Bullet list item (* or -)
     if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
       const items = trimmed.split('\n');
       return (
@@ -180,7 +200,6 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // Pull quote / Important quote block
     if (trimmed.startsWith('> ')) {
       const quoteText = trimmed.replace(/^>\s*/, '');
       return (
@@ -192,15 +211,12 @@ function renderFormattedContent(rawContent: string) {
       );
     }
 
-    // Helper to format inline markdown (bold & links)
     const formatInlineMarkdown = (text: string) => {
       return text
         .replace(/\*\*(.*?)\*\*/g, '<strong class="text-black font-semibold">$1</strong>')
         .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-black font-semibold underline decoration-neutral-400 underline-offset-4 hover:decoration-black hover:text-[#990000] transition-colors">$1</a>');
     };
 
-    // Standard Paragraph with clean typography
-    // Strip wrapping <p> and </p> if present
     const cleanParagraph = trimmed.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '');
     const formattedParagraph = formatInlineMarkdown(cleanParagraph);
     return (
@@ -213,73 +229,27 @@ function renderFormattedContent(rawContent: string) {
   });
 }
 
-export default function ArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(params);
-  const [article, setArticle] = useState<Article | null>(null);
-  const [related, setRelated] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadArticle();
-  }, [slug]);
-
-  const loadArticle = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/news/${slug}?t=${Date.now()}`, { cache: 'no-store' });
-      if (res.ok) {
-        const data = await res.json();
-        setArticle(data.article);
-        setRelated(data.related || []);
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: article?.title,
-        url: window.location.href,
-      }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Article link copied to clipboard!');
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="py-32 text-center">
-        <div className="w-8 h-8 border-2 border-black border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-        <p className="font-serif italic text-neutral-600 text-sm">Opening article record...</p>
-      </div>
-    );
-  }
+/**
+ * High-Performance Server-Side Rendered (SSR) Article Component
+ * Generates 100% pre-rendered HTML for Googlebot and instant indexing.
+ */
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const store = getStoreData();
+  const article = store.articles.find(a => a.slug === slug || a.id === slug);
 
   if (!article) {
-    return (
-      <div className="py-24 text-center border border-neutral-300 p-8 max-w-xl mx-auto my-12 bg-[#fafafa]">
-        <h2 className="text-2xl font-bold font-headline text-[#111111]">Article Record Not Found</h2>
-        <p className="text-xs font-serif text-neutral-600 mt-2 mb-6">This document may have been archived or re-filed.</p>
-        <Link href="/" className="inline-flex items-center text-xs uppercase font-sans font-bold bg-black text-white px-4 py-2 hover:bg-neutral-800">
-          <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Return to Front Page
-        </Link>
-      </div>
-    );
+    notFound();
   }
+
+  const related = store.articles
+    .filter(a => a.category === article.category && a.id !== article.id)
+    .slice(0, 4);
 
   const authorSlug = getAuthorSlug(article.author || 'Jonathan Vance');
   const authorProfile = getAuthorProfile(authorSlug);
 
-  // High-Grade Structured Data Schema for Google News, Google Discover & Rich Snippets
+  // Structured Data Schema for Google Search, Google News & Discover
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -321,19 +291,7 @@ export default function ArticlePage({
 
   return (
     <article className="max-w-4xl mx-auto space-y-6 py-6">
-      {/* Dynamic SEO Meta Title and Open Graph */}
-      <title>{`${article.title} | Prime News Channel`}</title>
-      <meta name="description" content={article.summary} />
-      <meta property="og:title" content={article.title} />
-      <meta property="og:description" content={article.summary} />
-      <meta property="og:image" content={article.imageUrl} />
-      <meta property="og:url" content={`https://primenewschannel.com/article/${article.slug}`} />
-      <meta name="twitter:title" content={article.title} />
-      <meta name="twitter:description" content={article.summary} />
-      <meta name="twitter:image" content={article.imageUrl} />
-      <link rel="canonical" href={`https://primenewschannel.com/article/${article.slug}`} />
-
-      {/* Schema.org JSON-LD for Google News & Search Engines */}
+      {/* Schema.org JSON-LD Pre-rendered for Search Engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -404,17 +362,9 @@ export default function ArticlePage({
               <ExternalLink className="w-3 h-3 ml-0.5" />
             </a>
           )}
-          <button
-            onClick={handleShare}
-            className="flex items-center space-x-1.5 font-bold text-neutral-800 hover:text-[#0056b3] cursor-pointer transition"
-            title="Share article"
-          >
-            <Share2 className="w-3.5 h-3.5" />
-            <span>Share</span>
-          </button>
+          <ShareButton title={article.title} />
         </div>
       </div>
-
 
       {/* Editorial Featured Media */}
       {article.imageUrl && (
@@ -424,9 +374,6 @@ export default function ArticlePage({
               src={article.imageUrl}
               alt={article.title}
               className="w-full h-full object-cover"
-              onError={(e: any) => {
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&auto=format&fit=crop&q=80';
-              }}
             />
           </div>
           <figcaption className="text-[11px] font-sans text-neutral-500 italic text-right">
@@ -435,43 +382,43 @@ export default function ArticlePage({
         </figure>
       )}
 
-      {/* Formatted Broadsheet Content (Clean Semantic HTML with H1, H2, H3, H4) */}
+      {/* Formatted Broadsheet Content (Pre-rendered for Google Search) */}
       <div className="pt-2 max-w-3xl">
         {renderFormattedContent(article.content)}
 
         {/* Correspondent Profile Bio Card */}
         {article.author && (() => {
-          const authorProfile = getAuthorProfile(article.author);
+          const authorProf = getAuthorProfile(article.author);
           return (
             <div className="my-10 p-6 bg-[#fbfbfb] border border-neutral-300 flex flex-col sm:flex-row items-center sm:items-start gap-5">
-              <Link href={`/author/${authorProfile.slug}`} className="shrink-0 group">
+              <Link href={`/author/${authorProf.slug}`} className="shrink-0 group">
                 <img
-                  src={authorProfile.avatar}
-                  alt={authorProfile.name}
+                  src={authorProf.avatar}
+                  alt={authorProf.name}
                   className="w-20 h-20 rounded-full object-cover border border-neutral-400 group-hover:border-black transition shadow-sm"
                 />
               </Link>
               <div className="flex-1 text-center sm:text-left space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <Link
-                    href={`/author/${authorProfile.slug}`}
+                    href={`/author/${authorProf.slug}`}
                     className="font-headline font-bold text-lg sm:text-xl text-[#111111] hover:text-[#0056b3] transition"
                   >
-                    About {authorProfile.name}
+                    About {authorProf.name}
                   </Link>
                   <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#b00]">
-                    {authorProfile.role}
+                    {authorProf.role}
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm font-serif-body text-neutral-700 leading-relaxed">
-                  {authorProfile.bio}
+                  {authorProf.bio}
                 </p>
                 <div className="pt-1">
                   <Link
-                    href={`/author/${authorProfile.slug}`}
+                    href={`/author/${authorProf.slug}`}
                     className="text-xs font-sans font-bold text-neutral-900 hover:text-[#0056b3] hover:underline"
                   >
-                    View All Dispatches by {authorProfile.name} →
+                    View All Dispatches by {authorProf.name} →
                   </Link>
                 </div>
               </div>
