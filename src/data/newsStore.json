@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "ct78p49112klo",
+      "title": "Scientists Uncover Universal Rule for Black Hole Jets",
+      "slug": "scientists-uncover-universal-rule-for-black-hole-jets",
+      "category": "Science",
+      "author": "Elena Rostova",
+      "publishedAt": "2026-10-16T12:15:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/ct78p49112klo",
+      "imageUrl": "https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&w=1200&q=80",
+      "summary": "Groundbreaking multi-wavelength observations establish a unified physical law governing how black holes across all mass scales trigger colossal relativistic plasma jets during active feeding cycles.",
+      "content": "In a fundamental breakthrough that resolves decades of theoretical debate in high-energy astrophysics, an international research consortium has discovered a universal mathematical law dictating how black holes launch colossal relativistic jets of ionized plasma into interstellar space.\n\nRemarkably, the newly verified physical principle operates identically across all mass scales—from stellar-mass black holes measuring just a few times the mass of our Sun to gargantuan supermassive behemoths harboring the mass of billions of suns at the hearts of distant galaxies.\n\n## Bridging the Gap Across Astronomical Mass Scales\n\nHistorically, astronomers observed that while black holes continuously swallow surrounding gas and dust via accretion disks, they periodically erupt, expelling relativistic jets traveling near the speed of light that shape entire galactic structures.\n\n- **The Critical Accretion Threshold:** Multi-wavelength space telescope data revealed that regardless of physical size, black holes trigger relativistic plasma jets at the exact same specific accretion rate ratio relative to their theoretical maximum capacity.\n- **Magnetic Flux Convergence:** When infalling matter compresses magnetic field lines against the event horizon, a uniform magneto-hydrodynamic instability forms, channeling escaping plasma outward along the rotational axis.\n- **Universal Scale Invariance:** Micro-quasars in our Milky Way galaxy evolve through their jet-launching cycles over mere days, mirroring the exact physical stages that take millions of years in supermassive galactic engines.\n\n## Rewriting Models of Galactic Evolution\n\nThe validation of this scale-invariant physical law allows astronomers to utilize compact, rapidly evolving stellar black holes as real-time laboratory models to predict the lifecycle of giant cosmic engines.\n\n> \"Finding that the physics governing a black hole ten times our Sun's mass applies perfectly to a monster ten billion times heavier is extraordinarily elegant,\" remarked senior theoretical physicist Dr. Julian Vance. \"It proves that strong-field general relativity and magnetic field interactions follow universal, orderly geometry regardless of scale.\"\n\n## Implications for Future Gravitational Surveys\n\nThe discovery provides crucial predictive parameters for upcoming space-based gravitational wave observatories and millimeter-wave Event Horizon Telescope arrays.\n\nBy understanding the exact feeding triggers that generate relativistic outflows, cosmologists can now model how black hole feedback regulates star formation, disperses heavy elements, and governs the long-term structural architecture of the universe."
+    },
+    {
       "id": "cx34m819001vo",
       "title": "Astronomers Detect Radio Burst That Traveled 10B Years",
       "slug": "astronomers-detect-radio-burst-that-traveled-10b-years",
