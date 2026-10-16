@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cy91k2844m1po",
+      "title": "BBC News Launches 24/7 Free Live Stream on YouTube",
+      "slug": "bbc-news-launches-24-7-free-live-stream-on-youtube",
+      "category": "Technology",
+      "author": "Gareth Davies",
+      "publishedAt": "2026-10-16T11:45:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cy91k2844m1po",
+      "imageUrl": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+      "summary": "In a historic digital expansion, the BBC has launched a permanent, free 24-hour live stream of its flagship television news channel on YouTube for audiences in the UK and United States.",
+      "content": "In a landmark strategic transformation reflecting the rapid migration of global audiences away from linear television toward digital platforms, the British Broadcasting Corporation (BBC) has officially launched a continuous, free 24/7 live stream of its flagship international television news channel on YouTube for viewers in both the United Kingdom and the United States.\n\nThe digital deployment represents one of the most consequential distribution shifts in the public broadcaster's century-long history, dismantling legacy geographic paywalls and cordoned broadcast tiers to meet younger audiences directly on commercial video platforms.\n\n## A Decisive Pivot Toward Digital-First Audiences\n\nHistorically, access to the BBC's continuous live news feed required either a traditional domestic television license in the UK or premium cable subscriptions through authorized international broadcast distributors in North America.\n\n- **Direct Global Streaming:** The YouTube channel stream delivers uninterrupted global breaking news coverage, studio interviews, and live dispatches free of subscription charges.\n- **Expanding Beyond Initial Pilot Territories:** The UK and US rollouts build upon successful preliminary streaming deployments executed earlier this year across Australia, Poland, Kenya, and Nigeria.\n- **Tackling Disinformation with Trusted Reporting:** Broadcaster leadership emphasized that establishing a permanent live presence on major video platforms provides a critical antidote to unverified algorithmic news feeds and social media disinformation.\n\n## The Economic and Commercial Realities of Cord-Cutting\n\nThe decision arrives amidst severe structural headwinds across the global television industry. Accelerating cable cancellations and declining traditional broadcast viewership have forced heritage news networks worldwide to re-engineer their advertising and distribution architectures.\n\n> \"The way global audiences consume breaking news has fundamentally transformed,\" declared a senior BBC News executive during the launch announcement in London. \"To preserve public-interest journalism, we must deliver our verified eyewitness reporting wherever audiences convene—without friction or technical barriers.\"\n\n## Industry Implications for Digital News Distribution\n\nMedia industry analysts predict the BBC's direct YouTube live streaming model will accelerate competitive pressures on American commercial cable news giants, who have largely maintained restrictive streaming paywalls.\n\nBy pairing verified, clinical field journalism with the frictionless distribution scale of open digital platforms, the broadcaster aims to anchor a new era of accessible, cross-border public broadcast journalism."
+    },
+    {
       "id": "cw84x19001qzo",
       "title": "AI Thermal Mapping Tech Halves Domestic Heat Waste",
       "slug": "ai-thermal-mapping-tech-halves-domestic-heat-waste",
