@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "id": "cx34m819001vo",
+      "title": "Astronomers Detect Radio Burst That Traveled 10B Years",
+      "slug": "astronomers-detect-radio-burst-that-traveled-10b-years",
+      "category": "Science",
+      "author": "Dr. Alistair Finch",
+      "publishedAt": "2026-10-16T12:00:00Z",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cx34m819001vo",
+      "imageUrl": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80",
+      "summary": "International radio astronomy arrays have recorded the most distant Fast Radio Burst in scientific history, originating from an ancient galactic collision when the universe was only 3 billion years old.",
+      "content": "Deep-space radio observatories spanning three continents have captured the most distant and energetic Fast Radio Burst (FRB) ever recorded in astrophysical history. The fleeting pulse of high-energy radio waves traveled through intergalactic space for more than 10 billion years before reaching Earth's antennas.\n\nThe cosmic signal, cataloged by researchers as an unprecedented observational anomaly, originated during an epoch when the universe was barely 3 billion years old—less than a quarter of its present age. The empirical discovery provides cosmologists with a direct physical probe into the turbulent conditions of the early universe.\n\n## Unlocking the Mechanics of Extreme Cosmic Transients\n\nFast Radio Bursts are millisecond-duration flashes of radio emission that release more energy in a fraction of a second than our Sun generates over several decades. Despite hundreds of localized detections over the past decade, their extreme physical engines have remained fiercely debated.\n\n- **Extreme Redshift Epoch:** Spectroscopic analysis of the signal's dispersion measure indicates the pulse traversed vast cosmological distances, carrying imprinted structural data about ancient intergalactic gas clouds.\n- **Magnetar and Collision Drivers:** High-resolution interferometric arrays traced the burst to a dense, chaotic grouping of colliding dwarf galaxies, suggesting extreme magnetic neutron stars or merging stellar remnants as likely sources.\n- **Mapping Missing Baryonic Matter:** By analyzing how the radio frequencies dispersed through intergalactic plasma over 10 billion light-years, physicists can accurately calculate the density of ordinary matter across cosmic history.\n\n## Validating New Cosmological Measurement Tools\n\nThe unprecedented travel time of the burst allows scientists to measure cosmological expansion and matter distribution with unprecedented empirical precision.\n\n> \"This single radio flash has acted like a cosmic laser pointer slicing through 80 percent of cosmic history,\" explained lead astrophysicist Dr. Marcus Thorne. \"It confirms that Fast Radio Bursts can serve as invaluable cosmological probes to weigh the diffuse gas weaving between ancient galaxies.\"\n\n## Next-Generation Radio Array Capabilities\n\nAstronomers are now configuring wide-field orbital radio telescopes and next-generation interferometers to monitor the localized patch of deep space for potential repeating pulses.\n\nAs international radio observatories achieve higher sensitivity thresholds, detections of ancient deep-space bursts are poised to unlock the foundational mysteries surrounding stellar birth, magnetic extremes, and the earliest structural evolution of the cosmos."
+    },
+    {
       "id": "cy91k2844m1po",
       "title": "BBC News Launches 24/7 Free Live Stream on YouTube",
       "slug": "bbc-news-launches-24-7-free-live-stream-on-youtube",
